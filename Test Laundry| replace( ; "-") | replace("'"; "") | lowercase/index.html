@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Laundry - Professional Laundry Services in Auckland</title>
+    <meta name="description" content="Test Laundry offers premium, 24/7 laundry services in Howick, Auckland. Experience spotless results with our expert care.">
+    <meta name="keywords" content="laundry, dry cleaning, Auckland, Howick, 24/7 laundry, wash and fold, shirt laundry, express laundry, clothing care, Test Laundry">
+    <meta name="author" content="LB">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%231E3A8A'/><path d='M50 20v30l-20 20M50 20v30l20 20' stroke='white' stroke-width='5' fill='none'/></svg>" type="image/x-icon">
+    <style>
+        :root {
+            --primary-color: #1E3A8A; /* Deep Blue - Trust, Cleanliness */
+            --secondary-color: #0EA5E9; /* Bright Sky Blue - Freshness, Openness */
+            --accent-color: #F97316; /* Orange - Energy, Efficiency */
+            --background-color: #F8FAFC; /* Very Light Gray - Clean, Modern */
+            --text-color: #1E293B; /* Dark Gray/Black - Readability */
+            --white-color: #FFFFFF;
+            --shadow-light: rgba(0, 0, 0, 0.05);
+            --shadow-dark: rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            line-height: 1.4;
+        }
+
+        h1 { font-size: 3.5rem; color: var(--primary-color); }
+        h2 { font-size: 2.8rem; color: var(--primary-color); text-align: center; margin-bottom: 3rem; }
+        h3 { font-size: 2rem; color: var(--primary-color); margin-bottom: 1.5rem; }
+
+        p { margin-bottom: 1.5rem; }
+        a { color: var(--secondary-color); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: var(--accent-color); }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--white-color);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px var(--shadow-light);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px var(--shadow-dark);
+            color: var(--white-color);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px var(--shadow-light);
+            backdrop-filter: blur(10px);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+            text-shadow: 1px 1px 3px var(--shadow-light);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.8), rgba(14, 165, 233, 0.7)), url('https://images.unsplash.com/photo-1553355956-8320336206b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center center/cover no-repeat;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white-color);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden; /* To contain the sparkle animation */
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            color: var(--white-color);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content .btn {
+            font-size: 1.3rem;
+            padding: 18px 45px;
+        }
+
+        /* About Section */
+        #about {
+            padding: 100px 0;
+            background-color: var(--white-color);
+        }
+
+        #about .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px var(--shadow-dark);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .about-image img:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .business-details {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: inset 0 5px 15px var(--shadow-dark);
+        }
+
+        .business-details p {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .business-details p i {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        /* Services Section */
+        #services {
+            padding: 100px 0;
+            background-color: var(--background-color);
+        }
+
+        .service-card {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px var(--shadow-light);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 40px var(--shadow-dark);
+            background-color: rgba(30, 58, 138, 0.03);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .service-card:hover i {
+            color: var(--accent-color);
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            flex-grow: 1; /* Allows description to take available space */
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(30, 58, 138, 0.1));
+        }
+
+        #contact .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            background-color: var(--white-color);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px var(--shadow-light);
+        }
+
+        .contact-info h2 {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-color);
+        }
+
+        .contact-info p i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        .contact-info p a {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .contact-info p:hover i {
+            color: var(--secondary-color);
+        }
+
+        .contact-info .highlight {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .google-map {
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px var(--shadow-light);
+            overflow: hidden;
+        }
+
+        .google-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 50px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: color 0.3s ease;
+            margin: 0 15px;
+        }
+
+        .footer-links a:hover {
+            color: var(--white-color);
+        }
+
+        .footer-social a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.4rem; }
+            h3 { font-size: 1.8rem; }
+
+            .hero-content h1 { font-size: 3.5rem; }
+            .hero-content p { font-size: 1.3rem; }
+
+            #about .container, #contact .container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image, .contact-info {
+                text-align: center;
+            }
+            .about-image img {
+                margin-top: 30px;
+            }
+            .contact-info {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 1.8rem; }
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+                margin-top: 20px;
+            }
+            header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav { width: 100%; }
+            nav ul {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .hero-content h1 { font-size: 3rem; }
+            .hero-content p { font-size: 1.1rem; }
+            .btn { font-size: 1rem; padding: 12px 30px; }
+
+            #hero { min-height: 70vh; padding: 80px 0; }
+            #about, #services, #contact { padding: 60px 0; }
+
+            .service-card {
+                padding: 25px;
+            }
+            .service-card h3 { font-size: 1.4rem; }
+            .service-card p { font-size: 0.95rem; }
+
+            .contact-info p { font-size: 1rem; gap: 10px; }
+            .contact-info p i { font-size: 1.3rem; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1rem; }
+            .btn { font-size: 0.95rem; padding: 10px 25px; }
+
+            .hero-content { padding: 0 15px; }
+            .hero-content p { max-width: 100%; }
+
+            .business-details { padding: 20px; }
+            .business-details p { font-size: 0.9rem; }
+
+            .service-card { padding: 20px; }
+            .service-card i { font-size: 2.5rem; }
+            .service-card h3 { font-size: 1.3rem; }
+
+            .contact-info { padding: 30px 20px; }
+            .contact-info p { font-size: 0.95rem; }
+
+            footer { padding: 30px 0; }
+            .footer-links a, .footer-social a { margin: 0 10px; }
+        }
+
+        /* Font inclusion (for Poppins) */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+        /* Font Awesome for Icons */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">Test Laundry</div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container hero-content">
+            <h1>Spotless Laundry, Effortless Living.</h1>
+            <p>Experience the ultimate in professional laundry and dry cleaning services in Auckland. Your clothes, perfectly cared for.</p>
+            <a href="#contact" class="btn btn-primary">Get a Quote Today</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about-text">
+                <h2>Your Trusted Laundry Experts in Howick</h2>
+                <p>At Test Laundry, we understand the importance of clean, fresh, and well-maintained clothing. Located conveniently in Howick, Auckland, we offer a comprehensive range of laundry services designed to meet your every need. Our commitment to quality, speed, and customer satisfaction sets us apart. We treat every garment with the utmost care, ensuring it returns to you looking and feeling its best.</p>
+                <div class="business-details">
+                    <p><i class="fas fa-map-marker-alt"></i> Howick, Auckland, New Zealand</p>
+                    <p><i class="fas fa-clock"></i> Open 24/7 - We're always here for you!</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:345345345">345345345</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></p>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1609952414708-755e2786b748?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Clean clothes being folded">
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Our Premium Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Wash & Fold</h3>
+                    <p>Our efficient wash and fold service ensures your everyday laundry is cleaned, dried, and neatly folded, saving you precious time.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-dry-cleaning"></i>
+                    <h3>Dry Cleaning</h3>
+                    <p>Expert dry cleaning for delicate fabrics, formal wear, and garments requiring specialized care. We handle it all with precision.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-shower"></i>
+                    <h3>Shirt Laundry</h3>
+                    <p>Crisp, perfectly pressed shirts ready for any occasion. Our meticulous process guarantees a professional finish every time.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Express Service</h3>
+                    <p>Need your laundry in a hurry? Our express service offers a quick turnaround without compromising on quality.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-blender-phone"></i>
+                    <h3>Household Items</h3>
+                    <p>From bedding to curtains, we clean and refresh your larger household textiles, making your home feel new.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-utensils"></i> <!-- Placeholder for another service, can be changed -->
+                    <h3>Special Care Items</h3>
+                    <p>For wedding dresses, leather, or other unique items, we provide specialized cleaning solutions tailored to their needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                <p><i class="fas fa-user"></i> Contact Person: LB</p>
+                <p><i class="fas fa-phone"></i> Phone: <a href="tel:345345345">345345345</a></p>
+                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Location: Howick, Auckland, New Zealand</p>
+                <p class="highlight">Open 24/7 - We're always ready!</p>
+            </div>
+            <div class="google-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.5647567168846!2d174.88438519999998!3d-37.0337319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d42a425f5a0b5%3A0xe1c3a9a689b3447!2sTest%20Laundry%2CAuckland%20New%20Zealand!5e0!3m2!1sen!2snz!4v1700169750802!5m2!1sen!2snz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <span style="font-size: 1.8rem; font-weight: 800; color: var(--white-color);">Test Laundry</span>
+            </div>
+            <div class="footer-links">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p>&copy; 2023 Test Laundry. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple animation trigger on scroll (optional, for more complex animations)
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    entry.target.classList.add('animate'); // Add a class for final state if needed
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to specific elements
+        document.querySelectorAll('.hero-content, .about-text, .about-image, .service-card, .contact-info').forEach(el => {
+            el.style.animation = 'fadeIn 1s ease-out forwards'; // Default fade-in
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Add a subtle sparkle effect to the hero background (optional)
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            sparkle.style.left = `${x}px`;
+            sparkle.style.top = `${y}px`;
+            document.getElementById('hero').appendChild(sparkle);
+
+            sparkle.addEventListener('animationend', () => {
+                sparkle.remove();
+            });
+        }
+
+        if (window.innerWidth > 768) { // Only for larger screens
+             setInterval(createSparkle, 300); // Adjust interval for density
+        }
+
+        // Add CSS for the sparkle effect
+        const sparkleStyle = document.createElement('style');
+        sparkleStyle.innerHTML = `
+            .sparkle {
+                position: fixed;
+                width: 5px;
+                height: 5px;
+                background-color: rgba(255, 255, 255, 0.7);
+                border-radius: 50%;
+                opacity: 0;
+                animation: sparkleAnimation 1.5s ease-out forwards;
+                z-index: 5;
+                pointer-events: none;
+            }
+            @keyframes sparkleAnimation {
+                0% { transform: scale(1); opacity: 0; }
+                50% { opacity: 0.7; transform: scale(2); }
+                100% { transform: scale(3); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(sparkleStyle);
+
+    </script>
+</body>
+</html>
