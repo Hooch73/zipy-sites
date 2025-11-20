@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Test Supermarket - Your fresh and local grocery store in Auckland, New Zealand. Offering a wide selection of quality products at affordable prices.">
+    <meta name="keywords" content="supermarket, groceries, Auckland, New Zealand, fresh produce, local, affordable, food, shopping">
+    <meta name="author" content="LB">
+    <title>Test Supermarket - Freshness & Quality in Auckland</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #2ecc71; /* Emerald Green - freshness, health */
+            --secondary-color: #3498db; /* Peter River - trust, reliability */
+            --dark-text: #2c3e50; /* Midnight Blue - professionalism */
+            --light-text: #ecf0f1; /* Clouds - cleanliness */
+            --accent-color: #f39c12; /* Orange - energy, vibrancy */
+            --gradient-primary: linear-gradient(to right, #2ecc71, #1abc9c);
+            --gradient-secondary: linear-gradient(to right, #3498db, #2980b9);
+            --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 6px 12px rgba(0, 0, 0, 0.15);
+            --shadow-heavy: 0 8px 16px rgba(0, 0, 0, 0.2);
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-text);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.75rem; }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color var(--transition-speed) ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--gradient-primary);
+            color: var(--light-text);
+            border-radius: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-medium);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-primary);
+            margin: 0 auto;
+            border-radius: 2px;
+            margin-top: 10px;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--light-text);
+            padding: 20px 0;
+            box-shadow: var(--shadow-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            color: var(--dark-text);
+            padding: 10px 0;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--gradient-primary);
+            transition: width var(--transition-speed) ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-secondary) url('https://via.placeholder.com/1500x800/3498db/ffffff?text=Fresh+Produce') no-repeat center center/cover;
+            color: var(--light-text);
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Overlay for text readability */
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            color: var(--light-text);
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+        }
+
+        .hero .btn {
+            background: var(--gradient-primary);
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+
+        .about .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: var(--shadow-heavy);
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--light-text);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .service-item i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-text);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+
+        .contact .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .contact-info {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .contact-info p i {
+            margin-right: 15px;
+            font-size: 1.4rem;
+            color: var(--accent-color);
+        }
+
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-text);
+            color: var(--light-text);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        footer p {
+            color: var(--light-text);
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: var(--primary-color);
+        }
+
+        footer a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            h1 { font-size: 3rem; }
+            .hero h1 { font-size: 3.5rem; }
+            h2 { font-size: 2rem; }
+            .section-title h2 { font-size: 2rem; }
+            h3 { font-size: 1.5rem; }
+
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 15px;
+            }
+
+            .about .container,
+            .contact .container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content, .about-image,
+            .contact-info, .map-container {
+                text-align: center;
+            }
+
+            .about-image, .map-container {
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero { height: 60vh; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1rem; }
+        }
+
+        @media (max-width: 576px) {
+            .container { padding: 0 15px; }
+            .btn { padding: 10px 20px; }
+            nav ul li { margin: 0 10px; }
+            .section-title { margin-bottom: 2rem; }
+            .service-item { padding: 25px; }
+        }
+
+        /* Font import for better typography */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Font Awesome for icons */
+        .fa {
+            display: inline-block;
+            font-family: FontAwesome;
+            font-style: normal;
+            font-weight: normal;
+            text-decoration: inherit;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        .fa-solid {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+        .fa-map-marker-alt::before { content: "\f3c5"; }
+        .fa-phone::before { content: "\f095"; }
+        .fa-envelope::before { content: "\f003"; }
+        .fa-shopping-cart::before { content: "\f07a"; }
+        .fa-leaf::before { content: "\f06c"; }
+        .fa-box-open::before { content: "\f466"; }
+
+    </style>
+    <!-- Add Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">Test Supermarket</div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="container">
+            <h1 class="fade-in">Freshness & Quality, Right Here in Auckland.</h1>
+            <p class="fade-in" style="animation-delay: 0.2s;">Discover a world of fresh produce, pantry staples, and everyday essentials at Test Supermarket. Your local destination for quality and value.</p>
+            <a href="#services" class="btn fade-in" style="animation-delay: 0.4s;">Explore Our Offerings</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content fade-in">
+                <h2 class="section-title">Welcome to Test Supermarket</h2>
+                <p>Founded with a passion for providing the community of Auckland with the freshest ingredients and a wide selection of groceries, Test Supermarket is your trusted local store. We pride ourselves on our commitment to quality, affordability, and exceptional customer service.</p>
+                <p>Our goal is to make your grocery shopping experience enjoyable and convenient. Whether you're looking for daily essentials, organic produce, or gourmet delights, you'll find it all under our roof. LB and the entire Test Supermarket team are dedicated to serving you.</p>
+                <a href="#contact" class="btn">Visit Us Today</a>
+            </div>
+            <div class="about-image fade-in">
+                <img src="https://via.placeholder.com/600x400/2ecc71/ffffff?text=Fresh+Groceries" alt="Test Supermarket Interior">
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">What We Offer</h2>
+            <div class="service-grid">
+                <div class="service-item fade-in">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Fresh Produce</h3>
+                    <p>A vibrant selection of fruits, vegetables, and herbs, sourced locally and internationally for ultimate freshness.</p>
+                </div>
+                <div class="service-item fade-in" style="animation-delay: 0.1s;">
+                    <i class="fas fa-box-open"></i>
+                    <h3>Pantry Staples</h3>
+                    <p>All your everyday needs from grains, pasta, and cereals to oils, spices, and canned goods.</p>
+                </div>
+                <div class="service-item fade-in" style="animation-delay: 0.2s;">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Dairy & Meats</h3>
+                    <p>High-quality dairy products, fresh meats, and poultry to complete your meals.</p>
+                </div>
+                <div class="service-item fade-in" style="animation-delay: 0.3s;">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Bakery & Delights</h3>
+                    <p>Freshly baked bread, pastries, and a selection of delicious treats for every occasion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-info fade-in">
+                <h3>Get In Touch</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Auckland, New Zealand</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:3423453425">3423453425</a> (LB)</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></p>
+                <p>We're always happy to hear from you! Visit us or give us a call for any inquiries.</p>
+            </div>
+            <div class="map-container fade-in">
+                <iframe
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=Test+Supermarket,Auckland+New+Zealand"
+                    allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Test Supermarket. All rights reserved.</p>
+            <p>Contact: LB | Phone: 3423453425 | Email: <a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, { threshold: 0.2 }); // Trigger when 20% of the element is visible
+
+            document.querySelectorAll('.fade-in').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
