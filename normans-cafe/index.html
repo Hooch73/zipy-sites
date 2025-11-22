@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Normans Cafe - Premium Coffee & Desserts in Howick, Auckland</title>
+    <meta name="description" content="Experience the best American coffee and decadent desserts at Normans Cafe, a charming spot in Howick, Auckland. Visit us for a delightful treat.">
+    <meta name="keywords" content="Normans Cafe, cafe Auckland, Howick cafe, American coffee, desserts Auckland, coffee shop, New Zealand cafe, Lloyd Brown">
+    <meta name="author" content="Normans Cafe">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23f0e6d2'/><text x='50' y='60' font-size='50' text-anchor='middle' fill='%23333'>☕</text></svg>" type="image/svg+xml">
+    <style>
+        :root {
+            --primary-color: #8B4513; /* SaddleBrown for warmth */
+            --secondary-color: #F0E6D2; /* Khaki for a creamy feel */
+            --accent-color: #DAA520; /* Goldenrod for a touch of elegance */
+            --text-color: #333;
+            --light-text-color: #fff;
+            --gradient-start: #A0522D; /* Sienna */
+            --gradient-end: #8B4513; /* SaddleBrown */
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --hover-glow: rgba(218, 165, 32, 0.3);
+        }
+
+        @font-face {
+            font-family: 'Pacifico';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/pacifico/v20/dV8B2Wpvc29ZJg9R_6h_d_e2.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2190-2191, U+2194-2199, U+21A9-21AA, U+2200-22FF, U+2300-23FF, U+2460-24EA, U+2500-259F, U+2600-26FF, U+2700-27BF, U+27F0-27FF, U+2E80-2E9F, U+2EF3-2EF4, U+2F00-2FDF, U+3000-303F, U+3090-309F, U+3297, U+3299);
+        }
+
+        @font-face {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUPjIg1_i6t8kCHXeZUWNrzqw.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2190-2191, U+2194-2199, U+21A9-21AA, U+2200-22FF, U+2300-23FF, U+2460-24EA, U+2500-259F, U+2600-26FF, U+2700-27BF, U+27F0-27FF, U+2E80-2E9F, U+2EF3-2EF4, U+2F00-2FDF, U+3000-303F, U+3090-309F, U+3297, U+3299;
+        }
+
+        @font-face {
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            src: url(https://fonts.gstatic.com/s/montserrat/v26/JTUPjIg1_i6t8kCHXeZUWNrzqw.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2190-2191, U+2194-2199, U+21A9-21AA, U+2200-22FF, U+2300-23FF, U+2460-24EA, U+2500-259F, U+2600-26FF, U+2700-27BF, U+27F0-27FF, U+2E80-2E9F, U+2EF3-2EF4, U+2F00-2FDF, U+3000-303F, U+3090-309F, U+3297, U+3299;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--secondary-color);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .logo-font {
+            font-family: 'Pacifico', cursive;
+            font-weight: 400;
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            color: var(--light-text-color);
+            padding: 20px 0;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2em;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: '☕'; /* Coffee cup emoji */
+            font-size: 1.2em;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: url('https://images.unsplash.com/photo-1533900654417-97140a7b823e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light-text-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInFromBottom 1s ease-out forwards;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            animation: textShadowPulse 2s infinite ease-in-out;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--light-text-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: 700;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px var(--hover-glow);
+        }
+
+        section {
+            padding: 80px 0;
+            background-color: var(--secondary-color);
+        }
+
+        section:nth-of-type(even) {
+            background-color: #fff;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        #about .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        #about img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            transition: transform 0.3s ease;
+        }
+
+        #about img:hover {
+            transform: scale(1.03);
+        }
+
+        #about .content {
+            text-align: left;
+        }
+
+        #about h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        #about p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        #services .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px var(--hover-glow);
+        }
+
+        .service-item .icon {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-item h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .service-item p {
+            font-size: 1em;
+        }
+
+        #contact .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: flex-start;
+        }
+
+        #contact .info {
+            text-align: left;
+        }
+
+        #contact h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        #contact p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        #contact a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+
+        #contact a:hover {
+            color: var(--accent-color);
+        }
+
+        #contact .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        #contact .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9em;
+            box-shadow: 0 -4px 15px var(--shadow-color);
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes textShadowPulse {
+            0% { text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }
+            50% { text-shadow: 0 8px 25px rgba(0, 0, 0, 0.7); }
+            100% { text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                margin-top: 20px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .hero h1 {
+                font-size: 3em;
+            }
+
+            .hero p {
+                font-size: 1.2em;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1.1em;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            section h2 {
+                font-size: 2.5em;
+                margin-bottom: 30px;
+            }
+
+            #about .container,
+            #contact .container {
+                grid-template-columns: 1fr;
+            }
+
+            #about img {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.8em;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+
+            section h2 {
+                font-size: 2em;
+            }
+
+            .service-item h3 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo logo-font">Normans Cafe</a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Our Offerings</a></li>
+                    <li><a href="#contact">Visit Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Sweet Escape in Howick</h1>
+            <p>Indulge in authentic American coffee and artisanal desserts.</p>
+            <a href="#contact" class="cta-button">Find Us Today</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <img src="https://images.unsplash.com/photo-1551028177-6b10e866f3a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Interior of Normans Cafe">
+            <div class="content">
+                <h2 style="text-align: left;">Welcome to Normans</h2>
+                <h3>Crafted with Passion, Served with a Smile</h3>
+                <p>Nestled in the heart of Howick, Auckland, Normans Cafe is your go-to destination for an authentic taste of American coffee culture and heavenly desserts. We pride ourselves on using the finest ingredients and pouring our hearts into every cup and creation.</p>
+                <p>Founded by Lloyd Brown, Normans Cafe is more than just a business; it's a passion project dedicated to bringing joy through delicious food and beverages. Come experience the warmth and flavour that makes us a local favourite.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Our Delicious Offerings</h2>
+            <div class="grid">
+                <div class="service-item">
+                    <div class="icon">☕</div>
+                    <h3>Artisanal American Coffee</h3>
+                    <p>Experience the rich, bold flavours of meticulously brewed American coffee, from classic drip to specialty pours. Perfect for any time of day.</p>
+                </div>
+                <div class="service-item">
+                    <div class="icon">🍰</div>
+                    <h3>Decadent Desserts</h3>
+                    <p>Indulge your sweet tooth with our wide selection of classic American desserts, including pies, cheesecakes, brownies, and more.</p>
+                </div>
+                <div class="service-item">
+                    <div class="icon">🥐</div>
+                    <h3>Freshly Baked Pastries</h3>
+                    <p>Start your morning or enjoy an afternoon treat with our selection of freshly baked pastries, muffins, and scones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="info">
+                <h2>Visit Us in Howick</h2>
+                <p><strong>Lloyd Brown</strong><br>
+                   Owner</p>
+                <p><strong>Phone:</strong> <a href="tel:021721889">021 721 889</a></p>
+                <p><strong>Email:</strong> <a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></p>
+                <p><strong>Address:</strong> Howick, Auckland, New Zealand</p>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=Normans Cafe,Auckland New Zealand" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Normans Cafe. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Simple fade-in animation for sections on scroll
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    } else {
+                        entry.target.style.opacity = '0';
+                        entry.target.style.transform = 'translateY(50px)';
+                    }
+                });
+            }, {
+                rootMargin: '0px',
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(50px)';
+                section.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                observer.observe(section);
+            });
+        });
+    </script>
+
+</body>
+</html>
