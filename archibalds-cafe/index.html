@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archibalds Cafe - Premium African Coffee & Desserts in Howick, Auckland</title>
+    <meta name="description" content="Experience the rich flavors of authentic African coffee and exquisite desserts at Archibalds Cafe in Howick, Auckland. A premium cafe for discerning tastes.">
+    <meta name="keywords" content="Archibalds Cafe, Auckland cafe, Howick cafe, African coffee, specialty coffee, gourmet desserts, cafe experience, New Zealand coffee, coffee shop Auckland">
+    <meta name="author" content="Archibalds Cafe">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='%234CAF50'/><text x='50' y='65' font-size='50' text-anchor='middle' fill='white'>☕</text></svg>" type="image/x-icon">
+
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #4CAF50; /* Deep, rich green */
+            --secondary-color: #FF9800; /* Warm, inviting orange */
+            --accent-color: #FFC107; /* Golden yellow */
+            --text-dark: #212121;
+            --text-light: #ffffff;
+            --background-light: #f5f5f5;
+            --background-dark: #303030;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.2);
+            --shadow-heavy: rgba(0, 0, 0, 0.3);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--background-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: var(--text-dark);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--gradient-primary);
+            color: var(--text-light);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px var(--shadow-medium);
+            color: var(--text-light);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .fade-in-delay {
+            animation-delay: 0.3s;
+        }
+
+        .fade-in-fast {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Font Imports */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap');
+
+        /* Header */
+        header {
+            background: var(--gradient-primary);
+            color: var(--text-light);
+            padding: 20px 0;
+            box-shadow: 0 4px 15px var(--shadow-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-shadow: 1px 1px 3px var(--shadow-dark);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            font-weight: 600;
+            transition: color 0.3s ease-in-out;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease-in-out;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: var(--text-light);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(30, 30, 30, 0.7), rgba(30, 30, 30, 0.7)), url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'), var(--background-dark); /* Placeholder image - replace with actual */
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            text-align: center;
+            padding: 150px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        #hero .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            text-shadow: 2px 2px 8px var(--shadow-heavy);
+        }
+
+        #hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 1px 1px 4px var(--shadow-medium);
+        }
+
+        .cta-button {
+            background: var(--gradient-secondary);
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px var(--shadow-medium);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 25px var(--shadow-heavy);
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--background-light);
+        }
+
+        #about .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        #about .about-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            object-fit: cover;
+            box-shadow: 10px 10px 30px var(--shadow-medium);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #about .about-image:hover {
+            transform: scale(1.03);
+        }
+
+        #about .about-content h2 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+        }
+
+        #about .about-content p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        /* Services Section */
+        #services {
+            background-color: #ffffff; /* Slightly lighter background */
+        }
+
+        #services .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .service-item {
+            background-color: var(--text-light);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px var(--shadow-light);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px var(--shadow-medium);
+        }
+
+        .service-item i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-item h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .service-item p {
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: var(--gradient-primary);
+            color: var(--text-light);
+            text-align: center;
+            padding-bottom: 120px; /* More space for map below */
+        }
+
+        #contact .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        #contact h2 {
+            font-size: 2.8rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        #contact .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+            text-align: left;
+            justify-items: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item i {
+            font-size: 1.8rem;
+            margin-right: 15px;
+            color: var(--accent-color);
+        }
+
+        .contact-item h4 {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 0;
+            font-weight: 600;
+        }
+
+        .contact-item p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0;
+        }
+
+        .contact-item a {
+            color: rgba(255, 255, 255, 0.9);
+            transition: color 0.3s ease-in-out;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-color);
+        }
+
+        #contact .contact-map {
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px var(--shadow-heavy);
+            width: 100%;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #contact .contact-map iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 15px; /* Match container radius */
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--background-dark);
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 0;
+        }
+
+        footer a {
+            color: var(--accent-color);
+        }
+
+        footer a:hover {
+            color: var(--text-light);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            #hero h1 {
+                font-size: 3rem;
+            }
+
+            #hero p {
+                font-size: 1.2rem;
+            }
+
+            #about .container {
+                grid-template-columns: 1fr;
+            }
+
+            #about .about-image {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header .container {
+                flex-wrap: wrap;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                background: rgba(48, 48, 48, 0.95);
+                position: absolute;
+                top: 80px; /* Below header */
+                left: 0;
+                padding: 20px 0;
+                box-shadow: 0 4px 15px var(--shadow-medium);
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu-toggle.open + nav {
+                display: flex;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            #hero {
+                padding: 100px 0;
+            }
+
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            #hero p {
+                font-size: 1rem;
+            }
+
+            .service-item {
+                padding: 25px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-item {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            #hero {
+                padding: 80px 0;
+            }
+
+            #hero h1 {
+                font-size: 2rem;
+            }
+
+            .btn, .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .service-item {
+                padding: 20px;
+            }
+
+            .service-item h3 {
+                font-size: 1.5rem;
+            }
+
+            .contact-item i {
+                font-size: 1.5rem;
+            }
+
+            .contact-item h4 {
+                font-size: 1rem;
+            }
+
+            .contact-item p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">Archibalds Cafe</div>
+            <button class="menu-toggle" aria-label="Toggle navigation menu">&#9776;</button>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Our Offerings</a></li>
+                    <li><a href="#contact">Visit Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container hero-content">
+            <h1 class="fade-in">Discover the Soul of Africa in Every Sip.</h1>
+            <p class="fade-in fade-in-delay">Exquisite African coffee and artisanal desserts, crafted with passion in the heart of Howick, Auckland.</p>
+            <a href="#contact" class="btn cta-button fade-in fade-in-delay">Experience Archibalds Today</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-image fade-in">
+                <img src="https://images.unsplash.com/photo-1551028179-304b385a889e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="Archibalds Cafe interior with coffee and pastries" class="about-image">
+            </div>
+            <div class="about-content fade-in fade-in-delay">
+                <h2 class="section-title">Our Story</h2>
+                <p>Welcome to Archibalds Cafe, a sanctuary for coffee connoisseurs and dessert lovers in Howick, Auckland. We are dedicated to bringing you an unparalleled cafe experience, focusing on the vibrant and complex flavors of authentic African coffee beans, ethically sourced and expertly roasted. Our passion extends to our artisanal desserts, each a unique creation designed to complement the richness of our coffees.</p>
+                <p>Founded with a vision to share the authentic taste of Africa, Archibalds Cafe is more than just a place to grab a coffee; it's a destination where culture, community, and exceptional culinary art converge. Come, discover your new favorite indulgence.</p>
+                <a href="#services" class="btn">Explore Our Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Offerings</h2>
+            <div class="service-grid">
+                <div class="service-item fade-in">
+                    <i class="fas fa-coffee"></i>
+                    <h3>Premium African Coffee</h3>
+                    <p>Experience a diverse range of single-origin and blended African coffees, from the fruity notes of Ethiopia to the bold robustness of Uganda. Expertly brewed to perfection.</p>
+                </div>
+                <div class="service-item fade-in fade-in-delay">
+                    <i class="fas fa-cookie-bite"></i>
+                    <h3>Artisanal Desserts</h3>
+                    <p>Indulge in our handcrafted cakes, pastries, and sweet treats, inspired by global flavors with a touch of African flair. Perfect pairings for your coffee.</p>
+                </div>
+                <div class="service-item fade-in fade-in-delay">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Cozy Ambiance</h3>
+                    <p>Relax and unwind in our warm, inviting atmosphere. Whether for a quick catch-up or a leisurely afternoon, Archibalds is your perfect escape.</p>
+                </div>
+                <div class="service-item fade-in">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Ethically Sourced</h3>
+                    <p>We are committed to sustainability and fair trade practices, ensuring that every bean and ingredient we use is sourced responsibly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Visit Us</h2>
+            <div class="contact-info">
+                <div class="contact-item fade-in">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Call Us</h4>
+                        <p><a href="tel:021721889">021 721 889</a></p>
+                    </div>
+                </div>
+                <div class="contact-item fade-in fade-in-delay">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email Us</h4>
+                        <p><a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></p>
+                    </div>
+                </div>
+                <div class="contact-item fade-in fade-in-delay">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Our Location</h4>
+                        <p>Howick, Auckland, New Zealand</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-map fade-in">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3197.363438776577!2d174.95644941542147!3d-36.84750319963888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d49d580a3c77d%3A0xfb2a4c712e47e5d4!2sArchibalds%20Cafe!5e0!3m2!1sen!2snz!4v1709381299418!5m2!1sen!2snz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Archibalds Cafe. All rights reserved.</p>
+            <p>Crafted with <i class="fas fa-heart" style="color: var(--secondary-color);"></i> in Auckland.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('open');
+        });
+
+        // Intersection Observer for Fade-in Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 }); // Trigger when 10% of the element is visible
+
+        document.querySelectorAll('.fade-in').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Add a class to apply the animation after the element is observed
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .fade-in-active {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        `;
+        document.head.appendChild(style);
+
+    </script>
+</body>
+</html>
+```
