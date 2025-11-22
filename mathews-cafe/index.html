@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Mathews Cafe - The soul of African coffee and artisan desserts in Howick, Auckland. Experience premium single-origin blends and exquisite treats.">
+    <meta name="theme-color" content="#2C1A12">
+    <meta property="og:title" content="Mathews Cafe | Premium African Coffee in Howick">
+    <meta property="og:description" content="Experience the rich heritage of African coffee and desserts at 47 Elliot Street, Howick.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Mathews Cafe | Auckland</title>
+
+    <!-- Google Fonts: Playfair Display (headings) & Plus Jakarta Sans (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- CSS RESET & VARIABLES --- */
+        :root {
+            --primary: #2C1A12; /* Deep Espresso */
+            --secondary: #C67C4E; /* Terracotta / Roasted Bean */
+            --accent: #D4A373; /* Gold/Crema */
+            --bg-light: #F9F5F0; /* Warm Cream */
+            --bg-white: #FFFFFF;
+            --text-dark: #1A1A1A;
+            --text-muted: #666666;
+            --glass: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --shadow-soft: 0 10px 40px rgba(44, 26, 18, 0.08);
+            --shadow-hover: 0 20px 60px rgba(198, 124, 78, 0.15);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+        ul { list-style: none; }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            border: 1px solid transparent;
+            box-shadow: 0 4px 15px rgba(44, 26, 18, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(198, 124, 78, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .text-center { text-align: center; }
+        .gold-text { color: var(--secondary); }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(249, 245, 240, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(44, 26, 18, 0.05);
+            padding: 20px 0;
+            transition: 0.3s;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { color: var(--secondary); }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+
+        .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(44, 26, 18, 0.6), rgba(44, 26, 18, 0.4)),
+                        url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about {
+            background: var(--bg-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-img-wrapper {
+            position: relative;
+        }
+
+        .about-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--secondary);
+            color: white;
+            padding: 30px;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 30px rgba(198, 124, 78, 0.4);
+            transform: rotate(-15deg);
+        }
+
+        .about-content h2 {
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        /* --- OFFERINGS / MENU --- */
+        .services {
+            background-color: var(--bg-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative circle background */
+        .services::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(198, 124, 78, 0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card {
+            background: var(--bg-white);
+            padding: 40px 30px;
+            border-radius: var(--radius);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 24px;
+            display: inline-block;
+            background: var(--bg-light);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            border-radius: 50%;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* --- TESTIMONIALS --- */
+        .testimonials {
+            background: var(--primary);
+            color: white;
+        }
+
+        .testimonials h2 { color: white; }
+        .testimonials .subtitle { color: var(--accent); font-weight: 600; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 10px; }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stars { color: var(--secondary); margin-bottom: 15px; }
+        
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-info h4 { color: white; font-size: 1rem; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .author-info span { color: var(--accent); font-size: 0.85rem; }
+
+        /* --- CONTACT & MAP --- */
+        .contact {
+            background: var(--bg-white);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            background: white;
+        }
+
+        .contact-info {
+            padding: 60px;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info h3 { color: white; margin-bottom: 30px; font-size: 2rem; }
+
+        .contact-item {
+            margin-bottom: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .contact-item span {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-top: 3px;
+        }
+
+        .contact-item div h5 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .contact-item div p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        .contact-item a {
+            color: white;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .map-container {
+            height: 100%;
+            min-height: 400px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #1a0f0a;
+            color: rgba(255,255,255,0.4);
+            padding: 60px 0 30px;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin-left: 20px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover { color: var(--secondary); }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 968px) {
+            .hero h1 { font-size: 3rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-img { height: 350px; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; } 
+            .mobile-menu-btn { display: block; color: var(--primary); }
+            
+            .hero h1 { font-size: 2.5rem; }
+            .section-padding { padding: 70px 0; }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            .social-links a { margin: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Mathews<span>Cafe</span></a>
+            <div class="nav-links">
+                <a href="#about">Our Story</a>
+                <a href="#menu">Menu Highlights</a>
+                <a href="#testimonials">Reviews</a>
+                <a href="#contact" class="btn">Book a Table</a>
+            </div>
+            <div class="mobile-menu-btn" onclick="document.querySelector('.nav-links').style.display = document.querySelector('.nav-links').style.display === 'flex' ? 'none' : 'flex'; document.querySelector('.nav-links').style.flexDirection = 'column'; document.querySelector('.nav-links').style.position = 'absolute'; document.querySelector('.nav-links').style.top = '70px'; document.querySelector('.nav-links').style.left = '0'; document.querySelector('.nav-links').style.width = '100%'; document.querySelector('.nav-links').style.background = 'white'; document.querySelector('.nav-links').style.padding = '20px'; document.querySelector('.nav-links').style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';">
+                ☰
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="hero-badge">Est. Howick, NZ</div>
+            <h1>The Soul of African Coffee</h1>
+            <p>Experience the warmth of single-origin beans and artisan desserts right here on Elliot Street.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#menu" class="btn">View Menu</a>
+                <a href="tel:021721889" class="btn btn-outline" style="border-color: white; color: white;">Call Lloyd</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img-wrapper" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1442512595331-e89e7385a861?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pouring Coffee" class="about-img">
+                    <div class="about-badge">
+                        <span>Premium<br>Beans</span>
+                    </div>
+                </div>
+                <div class="about-content" data-aos="fade-left">
+                    <span class="gold-text" style="font-weight: 600; letter-spacing: 1px; text-transform: uppercase; font-size: 0.9rem;">Our Heritage</span>
+                    <h2>A Taste of Africa in the Heart of Howick</h2>
+                    <p>At Mathews Cafe, we don't just serve coffee; we curate an experience. Founded by Lloyd Brown, our mission is to bring the distinct, earthy, and aromatic profiles of African coffee beans to New Zealand.</p>
+                    <p>Whether you are craving a robust Ethiopian blend or a delicate dessert to pair with your afternoon brew, our space on Elliot Street is designed for comfort, conversation, and culinary delight.</p>
+                    <a href="#contact" style="color: var(--secondary); font-weight: 600; border-bottom: 2px solid var(--secondary);">Visit us today &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Menu Highlights -->
+    <section id="menu" class="section-padding services">
+        <div class="container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <span class="gold-text" style="font-weight: 600; text-transform: uppercase; font-size: 0.9rem;">Curated Selection</span>
+                <h2>Menu Highlights</h2>
+            </div>
+            <div class="grid-container">
+                <!-- Card 1 -->
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">☕</div>
+                    <h3>African Blends</h3>
+                    <p>Signature single-origin coffees from Ethiopia and Kenya, roasted to highlight their floral and fruity notes.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">🍮</div>
+                    <h3>Malva Pudding</h3>
+                    <p>A classic, spongy apricot dessert of South African origin, served warm with creamy custard.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">🥧</div>
+                    <h3>Savory Pies</h3>
+                    <p>Handmade pastries filled with rich, savory ingredients perfect for a light lunch or hearty snack.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon">🍰</div>
+                    <h3>Milk Tart</h3>
+                    <p>A delicate sweet pastry crust containing a creamy filling made from milk, flour, sugar and eggs.</p>
+                </div>
+                <!-- Card 5 -->
+                <div class="card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-icon">🍵</div>
+                    <h3>Artisan Teas</h3>
+                    <p>A premium selection of loose-leaf teas, including Rooibos and Honeybush for a caffeine-free option.</p>
+                </div>
+                <!-- Card 6 -->
+                <div class="card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-icon">🥐</div>
+                    <h3>Fresh Pastries</h3>
+                    <p>Baked fresh daily in our kitchen, ranging from buttery croissants to indulgent muffins.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section-padding testimonials">
+        <div class="container">
+            <div class="text-center section-header" data-aos="fade-up">
+                <span class="subtitle">What Locals Say</span>
+                <h2>Loved by Howick</h2>
+            </div>
+            <div class="grid-container">
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"The coffee here is unlike anything else in East Auckland. You can really taste the quality of the beans. A true hidden gem."</p>
+                    <div class="author">
+                        <div class="author-info">
+                            <h4>Sarah Jenkins</h4>
+                            <span>Local Guide</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Lloyd is a fantastic host. The Malva pudding reminds me of home, and the atmosphere is just so warm and welcoming."</p>
+                    <div class="author">
+                        <div class="author-info">
+                            <h4>David Maaka</h4>
+                            <span>Regular Customer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Finally, a place that takes dessert seriously! The Milk Tart is absolute perfection. Highly recommend stopping by."</p>
+                    <div class="author">
+                        <div class="author-info">
+                            <h4>Emma T.</h4>
+                            <span>Food Blogger</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Map -->
+    <section id="contact" class="section-padding contact">
+        <div class="container">
+            <div class="contact-wrapper" data-aos="fade-up">
+                <div class="contact-info">
+                    <h3>Visit Us</h3>
+                    
+                    <div class="contact-item">
+                        <span>📍</span>
+                        <div>
+                            <h5>Address</h5>
+                            <p>47 Elliot Street, Howick<br>Auckland, 2014, New Zealand</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <div>
+                            <h5>Phone</h5>
+                            <p><a href="tel:021721889">021 721 889</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>✉️</span>
+                        <div>
+                            <h5>Email</h5>
+                            <p><a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <span>🕒</span>
+                        <div>
+                            <h5>Hours</h5>
+                            <p>Mon - Fri: 7am - 4pm<br>Sat - Sun: 8am - 3pm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=47 Elliot Street, Howick, Auckland, 2014, New Zealand" width="100%" height="100%" style="border:0; min-height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <a href="#" class="footer-logo">Mathews Cafe</a>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Facebook</a>
+                    <a href="mailto:lloyd@pungatrading.com">Email</a>
+                </div>
+            </div>
+            <div class="text-center">
+                <p>&copy; 2025 Mathews Cafe. Operated by Punga Trading. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+            easing: 'ease-out-cubic'
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 5px 20px rgba(0,0,0,0.05)';
+                nav.style.background = 'rgba(249, 245, 240, 0.95)';
+            } else {
+                nav.style.boxShadow = 'none';
+                nav.style.background = 'rgba(249, 245, 240, 0.8)';
+            }
+        });
+    </script>
+</body>
+</html>
