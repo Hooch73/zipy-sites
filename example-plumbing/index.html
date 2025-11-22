@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Plumbing - Expert Plumbers in Auckland CBD</title>
+    <meta name="description" content="Reliable and fast plumbing services in Auckland CBD. Specializing in emergency repairs. Call John Smith at 021 234 5678.">
+    <meta name="keywords" content="plumber, plumbing, Auckland CBD, emergency plumbing, drain unblocking, leak detection, hot water systems, pipe repair, John Smith">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%23007bff' stroke-width='5'/><path d='M50 25 L50 75' stroke='%23007bff' stroke-width='5'/><path d='M25 50 L75 50' stroke='%23007bff' stroke-width='5'/></svg>" type="image/svg+xml">
+
+    <style>
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #94d2bd;
+            --text-color: #1a1a1a;
+            --white-color: #ffffff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #343a40;
+            --footer-bg: #003f5c;
+            --shadow-strong: 0 8px 25px rgba(0, 0, 0, 0.15);
+            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --transition-smooth: all 0.3s ease-in-out;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            background-color: var(--white-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            margin-bottom: 0.8em;
+        }
+
+        h1 { font-size: 3.2em; }
+        h2 { font-size: 2.5em; color: var(--primary-color); }
+        h3 { font-size: 1.8em; color: var(--secondary-color); }
+        h4 { font-size: 1.3em; color: var(--dark-gray); }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white-color);
+            padding: 100px 0 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.3" d="M0,128L64,117.3C128,107,256,85,384,106.7C512,128,640,192,768,197.3C896,203,1024,149,1152,138.7C1280,128,1408,160,1440,176L1440,320L1376,320C1312,320,1152,320,1024,320C896,320,768,320,640,320C512,320,384,320,256,320C128,320,64,320,0,320Z"></path></svg>') no-repeat bottom center;
+            background-size: cover;
+            transform: rotate(180deg);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 20px;
+            font-size: 3.8em;
+            line-height: 1.2;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s 0.5s ease-out forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: var(--shadow-strong);
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            box-shadow: 0 10px 30px rgba(0, 95, 115, 0.3);
+            transform: translateY(-3px);
+            text-decoration: none;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        section:nth-of-type(odd) {
+            background-color: var(--light-gray);
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+            filter: grayscale(10%);
+            transition: var(--transition-smooth);
+        }
+
+        .about-content img:hover {
+            transform: scale(1.03);
+            filter: grayscale(0%);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .about-text h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .about-text strong {
+            color: var(--secondary-color);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-item {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .service-item i {
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-item h4 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .service-item p {
+            flex-grow: 1;
+            margin-bottom: 0;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .contact-info {
+            padding: 30px;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border-radius: 8px;
+            box-shadow: var(--shadow-strong);
+        }
+
+        .contact-info h3 {
+            color: var(--white-color);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-info p i {
+            color: var(--accent-color);
+            font-size: 1.3em;
+        }
+
+        .contact-info a {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            color: var(--white-color);
+            text-decoration: underline;
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: var(--shadow-light);
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--white-color);
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5em; }
+            h2 { font-size: 2em; }
+            h3 { font-size: 1.5em; }
+
+            header {
+                padding: 80px 0 100px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8em;
+            }
+
+            .hero-content p {
+                font-size: 1.2em;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content img {
+                margin-bottom: 30px;
+            }
+
+            .contact-info {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.7em; }
+
+            .hero-content h1 {
+                font-size: 2.2em;
+            }
+
+            .hero-content p {
+                font-size: 1.1em;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+
+            .service-item {
+                padding: 20px;
+            }
+        }
+
+        /* Font Awesome Icons - for demonstration, consider using local SVG or font files for production */
+        .fas, .far, .fab { font-family: "Font Awesome 5 Free"; font-weight: 900; }
+        .far { font-weight: 400; }
+        .fab { font-weight: 400; }
+        .fa-phone-alt::before { content: "\f879"; }
+        .fa-envelope::before { content: "\f0e0"; }
+        .fa-map-marker-alt::before { content: "\f3c5"; }
+        .fa-tools::before { content: "\f541"; }
+        .fa-water::before { content: "\f773"; }
+        .fa-exclamation-triangle::before { content: "\f071"; }
+        .fa-undo-alt::before { content: "\f2ea"; }
+        .fa-cog::before { content: "\f013"; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container hero-content">
+            <h1>Your Trusted Plumber in Auckland CBD</h1>
+            <p>Fast, reliable, and expert plumbing solutions for your home or business.</p>
+            <a href="#contact" class="cta-button">Get a Free Quote</a>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container about-content">
+            <div class="about-text">
+                <h2>About Example Plumbing</h2>
+                <h3>Experienced & Professional Service</h3>
+                <p>At Example Plumbing, we are dedicated to providing top-notch plumbing services across Auckland CBD. With years of experience, our team is equipped to handle everything from routine maintenance to complex installations.</p>
+                <p>We pride ourselves on our punctuality, professionalism, and commitment to customer satisfaction. <strong>Specializing in emergency repairs</strong>, we're here for you when you need us most.</p>
+                <p>Your peace of mind is our priority.</p>
+            </div>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 400' style='enable-background:new 0 0 500 400' xml:space='preserve'><style>.st0{fill:%23005f73;}.st1{fill:%230a9396;}.st2{fill:%2394d2bd;}.st3{fill:%23ffffff;}</style><path class='st0' d='M450,50v300H50V50H450z'/><path class='st1' d='M450,50h50v300H450V50z'/><path class='st1' d='M50,50H0v300H50V50z'/><path class='st2' d='M400,100v200H100V100H400z'/><path class='st2' d='M400,100h50v200H400V100z'/><path class='st2' d='M100,100H50v200H100V100z'/><circle class='st3' cx='250' cy='200' r='50'/><path class='st3' d='M250,150v100h50v-50H250z'/><path class='st3' d='M250,150h-50v50h50V150z'/></svg>" alt="Plumber working on pipes">
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h4>Emergency Repairs</h4>
+                    <p>24/7 rapid response for burst pipes, blocked drains, and any urgent plumbing issue.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-tools"></i>
+                    <h4>General Maintenance</h4>
+                    <p>Routine checks, leak detection, and preventative maintenance to keep your plumbing in top condition.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-water"></i>
+                    <h4>Hot Water Systems</h4>
+                    <p>Installation, repair, and maintenance of all types of hot water systems.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-undo-alt"></i>
+                    <h4>Drain Unblocking</h4>
+                    <p>Clearing stubborn blockages efficiently and effectively.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-cog"></i>
+                    <h4>Fixture Installation & Repair</h4>
+                    <p>From taps to toilets, we handle all installations and repairs with precision.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-home"></i>
+                    <h4>New Installations</h4>
+                    <p>Professional plumbing setup for renovations and new builds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container contact-content">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p><i class="fas fa-phone-alt"></i><a href="tel:0212345678">021 234 5678</a></p>
+                <p><i class="fas fa-envelope"></i><a href="mailto:contact@example.com">contact@example.com</a></p>
+                <p><i class="fas fa-map-marker-alt"></i>Auckland CBD, New Zealand</p>
+                <p><strong>Contact Person:</strong> John Smith</p>
+                <p><strong>Available:</strong> 24/7 for Emergency Repairs</p>
+            </div>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=Example Plumbing,Auckland CBD"
+                    allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Example Plumbing. All rights reserved. | Auckland CBD Plumber</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple fade-in on scroll (optional, for added dynamic feel)
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            section.style.animation = 'fadeInUp 1s ease-out forwards'; // Default animation for elements
+            section.style.animationPlayState = 'paused'; // Initially paused
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
