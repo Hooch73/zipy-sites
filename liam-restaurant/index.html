@@ -1,0 +1,380 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liam Restaurant - American Diner in Howick, Auckland</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #D92B2B;
+            --dark-color: #1a1a1a;
+            --light-color: #f4f4f4;
+            --white-color: #ffffff;
+            --grey-color: #666;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-color: var(--white-color);
+            color: var(--dark-color);
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 2rem;
+        }
+        h1, h2, h3 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+        }
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+        .section {
+            padding: 5rem 0;
+        }
+        .section-light {
+            background-color: var(--light-color);
+        }
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white-color);
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #ddd;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        .navbar .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .navbar .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .navbar .nav-links li {
+            margin-left: 25px;
+        }
+        .navbar .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 700;
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark-color);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        #hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            color: var(--white-color);
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+        }
+        #hero h1 {
+            font-size: 3.5rem;
+        }
+        #hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+        #about .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+        .service-card {
+            background: var(--white-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .service-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .testimonial-card {
+            background: var(--white-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--primary-color);
+        }
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .testimonial-card .author {
+            font-weight: 700;
+            text-align: right;
+            color: var(--dark-color);
+        }
+        #contact .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        .contact-details p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-details strong {
+            color: var(--primary-color);
+        }
+        .map-container iframe {
+            border-radius: 10px;
+        }
+        footer {
+            background: var(--dark-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 2rem 0;
+        }
+        @media (min-width: 769px) {
+            #about .about-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            #hero h1 { font-size: 2.8rem; }
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--white-color);
+                text-align: center;
+                border-top: 1px solid #ddd;
+            }
+            .navbar .nav-links.active {
+                display: flex;
+            }
+            .navbar .nav-links li {
+                margin: 15px 0;
+            }
+            .hamburger {
+                display: flex;
+            }
+            #contact .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#home" class="logo">Liam Restaurant</a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Menu</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="container">
+                <h1>Authentic American Flavours.<br>Unforgettable Auckland Nights.</h1>
+                <p>Your local slice of classic diner heaven in the heart of Howick.</p>
+                <a href="#services" class="btn">Explore Our Menu</a>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2>Our Story</h2>
+                <div class="about-content">
+                    <div>
+                        <h3>Howick's Home of Comfort Food</h3>
+                        <p>Welcome to Liam Restaurant, Howick's heart of classic American dining! Born from a passion for authentic comfort food, our journey began with a simple mission: to bring the nostalgic charm of a true American diner to the vibrant community of Auckland. We believe in quality ingredients, hearty portions, and service with a smile. Every burger is grilled to perfection, every milkshake is spun with care, and every dessert is a sweet slice of happiness. Our cozy spot on Elliot Street is more than just a restaurant; it's a place where families gather, friends reconnect, and great memories are made over even greater food. From our sizzling grill to your plate, we pour our heart into every dish. Come on in, take a seat, and experience a taste of Americana right here in Howick. We can't wait to serve you!</p>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1579631542720-3a813f535ce0?auto=format&fit=crop&w=800&q=80" alt="Interior of a classic American diner" style="width:100%; border-radius:10px;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section section-light">
+            <div class="container">
+                <h2>What We Serve</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon">🍔</div>
+                        <h3>Classic American Burgers</h3>
+                        <p>Juicy, handcrafted beef patties with all the classic fixings on a perfectly toasted brioche bun.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">🍟</div>
+                        <h3>Gourmet Loaded Fries</h3>
+                        <p>Crispy golden fries piled high with cheese, bacon, and our signature sauces. A meal in itself!</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">🥤</div>
+                        <h3>Hand-Spun Milkshakes</h3>
+                        <p>Thick, creamy, and delicious. Made with real ice cream in timeless flavours like chocolate, vanilla, and strawberry.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">🍰</div>
+                        <h3>Decadent Desserts</h3>
+                        <p>From New York cheesecake to warm apple pie, satisfy your sweet tooth with our house-made treats.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="section">
+            <div class="container">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p>"Absolutely the best burgers in East Auckland! The atmosphere is fantastic and the staff are incredibly friendly. A new family favourite for sure."</p>
+                        <p class="author">- Sarah J.</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"The milkshakes are to die for! I felt like I was transported back to a classic 50s diner. Liam Restaurant is a must-visit in Howick."</p>
+                        <p class="author">- Mark P.</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"From the loaded fries to the cheesecake, every single thing we ordered was delicious. The quality is top-notch. We'll be back again and again!"</p>
+                        <p class="author">- The Chen Family</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section section-light">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-details">
+                        <h3>Visit Us in Howick</h3>
+                        <p>We're ready to welcome you for a delicious meal. Find us at our convenient location in Auckland for dine-in or takeaway.</p>
+                        <p><strong>Address:</strong><br>47 Elliot Street, Howick, Auckland, 2014</p>
+                        <p><strong>Contact Person:</strong><br>Lloyd Brown</p>
+                        <p><strong>Phone:</strong><br><a href="tel:021721889">021 721 889</a></p>
+                        <p><strong>Email:</strong><br><a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></p>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=47 Elliot Street, Howick, Auckland, 2014, New Zealand" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Liam Restaurant. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+```
