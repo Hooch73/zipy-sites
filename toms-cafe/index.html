@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tom's Cafe - Authentic American Coffee & Desserts in Howick, Auckland</title>
+    <meta name="description" content="Experience the best of American coffee and decadent desserts at Tom's Cafe in Howick, Auckland. Your local spot for delicious treats and a warm atmosphere.">
+    <meta name="keywords" content="Tom's Cafe, cafe Auckland, Howick cafe, American coffee, desserts Auckland, coffee shop, Lloyd Brown, Punga Trading">
+    <meta name="author" content="Tom's Cafe">
+    <meta property="og:title" content="Tom's Cafe - Authentic American Coffee & Desserts in Howick, Auckland">
+    <meta property="og:description" content="Experience the best of American coffee and decadent desserts at Tom's Cafe in Howick, Auckland. Your local spot for delicious treats and a warm atmosphere.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/FF5733/FFFFFF?text=Tom's+Cafe">
+    <meta property="og:url" content="YOUR_WEBSITE_URL_HERE"> <!-- Replace with actual URL -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tom's Cafe - Authentic American Coffee & Desserts in Howick, Auckland">
+    <meta name="twitter:description" content="Experience the best of American coffee and decadent desserts at Tom's Cafe in Howick, Auckland. Your local spot for delicious treats and a warm atmosphere.">
+    <meta name="twitter:image" content="https://via.placeholder.com/1200x630/FF5733/FFFFFF?text=Tom's+Cafe">
+
+    <style>
+        :root {
+            --primary-color: #f39c12; /* Warm, inviting orange */
+            --secondary-color: #d35400; /* Deeper, richer orange */
+            --tertiary-color: #2c3e50; /* Dark, sophisticated blue-grey */
+            --accent-color: #e74c3c; /* A pop of vibrant red for desserts */
+            --background-color: #f8f8f8;
+            --text-color: #333;
+            --light-text-color: #fff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --gradient-start: #ff9a44;
+            --gradient-end: #fad0c4;
+            --hover-color: #e67e22;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--hover-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            color: var(--light-text-color);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: background 0.3s ease;
+        }
+
+        header.scrolled {
+            background: var(--tertiary-color);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--light-text-color);
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1495474472287-4d71b0270655?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light-text-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            animation: fadeIn 1.5s ease-out 0.5s;
+            opacity: 0;
+        }
+
+        .hero-content.animate-p {
+            animation: fadeIn 1.5s ease-out 0.5s forwards;
+        }
+
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--light-text-color);
+            padding: 15px 30px;
+            font-size: 1.3em;
+            font-weight: 700;
+            border-radius: 30px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: bounceIn 1s ease-out 1s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(231, 76, 60, 0.6);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        section:nth-child(even) {
+            background-color: #fff;
+        }
+
+        section:nth-child(odd) {
+            background-color: var(--background-color);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 60px;
+            color: var(--tertiary-color);
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 3em;
+            color: var(--secondary-color);
+        }
+
+        .about-text p {
+            font-size: 1.1em;
+            color: var(--text-color);
+            max-width: 600px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 10px 10px 25px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.03);
+            box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .service-item {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-item i {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-item h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: var(--tertiary-color);
+        }
+
+        .service-item p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .contact-info {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .contact-info h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .contact-info p {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .contact-details {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--tertiary-color);
+        }
+
+        .contact-details i {
+            font-size: 2em;
+            margin-right: 20px;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .contact-details span {
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .contact-details a {
+            color: var(--tertiary-color);
+            font-weight: 600;
+        }
+
+        .contact-details a:hover {
+            color: var(--hover-color);
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--tertiary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9em;
+        }
+
+        footer p {
+            margin-bottom: 0;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            color: var(--hover-color);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            from, 20%, 50%, 80%, to {
+                animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            }
+            0% {
+                opacity: 0;
+                transform: scale(.3);
+            }
+            20% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(.9);
+            }
+            80% {
+                transform: scale(1.03);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+            }
+            nav ul {
+                margin-top: 20px;
+            }
+            nav ul li {
+                margin: 0 15px;
+            }
+            .hero h1 {
+                font-size: 3em;
+            }
+            .hero p {
+                font-size: 1.2em;
+            }
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
+            }
+            .about-image, .contact-info {
+                text-align: center;
+            }
+            .about-image img {
+                max-width: 80%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2em;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            nav ul li a {
+                font-size: 0.9em;
+                padding: 8px 12px;
+            }
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .cta-button {
+                font-size: 1.1em;
+                padding: 12px 25px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .section-title {
+                font-size: 2.5em;
+                margin-bottom: 40px;
+            }
+            .service-item {
+                padding: 20px;
+            }
+            .contact-details i {
+                font-size: 1.8em;
+                margin-right: 15px;
+            }
+            .contact-details span {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.8em;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 10px 0;
+            }
+            .hero {
+                height: 70vh;
+            }
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+                margin-bottom: 30px;
+            }
+            .cta-button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+            .section-title {
+                font-size: 2em;
+            }
+            .contact-content {
+                padding: 0 15px;
+            }
+            .contact-details {
+                flex-direction: column;
+                text-align: center;
+            }
+            .contact-details i {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            .contact-details span {
+                margin-bottom: 10px;
+            }
+            .map-container {
+                padding-bottom: 75%; /* 4:3 aspect ratio for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <div class="logo">Tom's Cafe</div>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Our Offerings</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <h1>Authentic American Coffee & Decadent Desserts</h1>
+            <p class="animate-p">Your sweet escape in the heart of Howick, Auckland.</p>
+            <a href="#contact" class="cta-button">Visit Us Today!</a>
+        </div>
+    </section>
+
+    <section id="about" class="animate-on-scroll">
+        <div class="container about-content">
+            <div class="about-text">
+                <h2>Welcome to Tom's Cafe</h2>
+                <p>Nestled in the charming suburb of Howick, Auckland, Tom's Cafe brings you the authentic taste of America with our expertly brewed coffee and irresistible, homemade desserts. We pride ourselves on creating a warm and inviting atmosphere where every visitor feels like family.</p>
+                <p>Whether you're craving a rich, bold Americano, a slice of classic apple pie, or a comforting brownie, we've got something to satisfy every craving. Come experience a little piece of Americana right here in New Zealand!</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Interior of Tom's Cafe with coffee and desserts">
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="animate-on-scroll">
+        <div class="container">
+            <h2 class="section-title">Our Delectable Offerings</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fas fa-coffee"></i> <!-- Font Awesome icon for coffee -->
+                    <h3>Premium American Coffee</h3>
+                    <p>Experience the true taste of American coffee culture. From robust drip coffee to creamy lattes, brewed to perfection.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-ice-cream"></i> <!-- Font Awesome icon for ice cream/dessert -->
+                    <h3>Classic American Desserts</h3>
+                    <p>Indulge in a mouth-watering selection of pies, cakes, cookies, and brownies – just like grandma used to make!</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-utensils"></i> <!-- Font Awesome icon for utensils/dining -->
+                    <h3>Cozy Atmosphere</h3>
+                    <p>Relax and unwind in our friendly, comfortable cafe. Perfect for catching up with friends or enjoying a quiet moment.</p>
+                </div>
+                <div class="service-item">
+                    <i class="fas fa-birthday-cake"></i> <!-- Font Awesome icon for cake -->
+                    <h3>Special Occasion Treats</h3>
+                    <p>Celebrating something special? Let us create a custom cake or dessert platter to make your event unforgettable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="animate-on-scroll">
+        <div class="container contact-content">
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <p>We'd love to hear from you! Visit us in Howick or reach out with any questions.</p>
+                <div class="contact-details">
+                    <i class="fas fa-phone"></i>
+                    <span>Call us: <a href="tel:021721889">021 721 889</a></span>
+                </div>
+                <div class="contact-details">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email us: <a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></span>
+                </div>
+                <div class="contact-details">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Find us: Howick, Auckland, New Zealand</span>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=Toms%20Cafe,Auckland%20New%20Zealand&hidden=place_id"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Tom's Cafe. All rights reserved. Crafted with <i class="fas fa-heart" style="color: var(--accent-color);"></i> by Punga Trading.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome CDN for icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Scroll animation for elements
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // For hero paragraph, trigger its animation after the main heading
+                    if (entry.target.classList.contains('animate-p')) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                        }, 500); // Match the delay in CSS animation
+                    }
+                } else {
+                    // Remove class if you want animation to restart on scroll back up
+                    // entry.target.classList.remove('is-visible');
+                    // For hero paragraph, reset opacity if you want it to disappear
+                    if (entry.target.classList.contains('animate-p')) {
+                        entry.target.style.opacity = '0';
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-p');
+        animatedElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
