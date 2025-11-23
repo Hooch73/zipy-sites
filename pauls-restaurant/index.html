@@ -1,0 +1,509 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pauls Restaurant - American Diner in Howick, Auckland</title>
+    <meta name="description" content="Pauls Restaurant, owned by Lloyd Brown, is the best American diner in Howick, Auckland, specialising in delicious food and desserts.">
+    <meta name="keywords" content="American Diner, Restaurant, Howick, Auckland, Burgers, Milkshakes, Desserts, Pauls Restaurant">
+    
+    <style>
+        /* Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Montserrat:wght@400;600&display=swap');
+
+        /* CSS Variables */
+        :root {
+            --primary-color: #c0392b; /* Diner Red */
+            --secondary-color: #2c3e50; /* Dark Blue/Grey */
+            --background-color: #f8f9fa; /* Light Grey */
+            --text-color: #333;
+            --white-color: #ffffff;
+            --heading-font: 'Oswald', sans-serif;
+            --body-font: 'Montserrat', sans-serif;
+        }
+
+        /* General Styles & Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--body-font);
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--heading-font);
+            text-transform: uppercase;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; text-align: center; }
+        h3 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            font-family: var(--heading-font);
+            text-transform: uppercase;
+            font-weight: 700;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #a52d22;
+        }
+
+        /* Header & Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: var(--heading-font);
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--secondary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--secondary-color);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Hero Section */
+        #home {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1365&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white-color);
+            padding: 0;
+        }
+
+        .hero-content h1 {
+            color: var(--white-color);
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        /* About Section */
+        #about .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        #about .about-image {
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Services / Menu Highlights Section */
+        #menu {
+            background-color: var(--white-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background-color: var(--background-color);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--white-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .testimonial-card p.quote {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card p.author {
+            font-weight: 600;
+            text-align: right;
+            color: var(--secondary-color);
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--white-color);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .contact-info ul {
+            list-style: none;
+        }
+
+        .contact-info li {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info li span {
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            width: 30px;
+            text-align: center;
+        }
+
+        .map-container iframe {
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .hero-content h1 { font-size: 3rem; }
+            .hero-content p { font-size: 1.2rem; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 75px; /* Adjust based on navbar height */
+                background-color: var(--white-color);
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            #about .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            #about .about-image {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="container nav-container">
+                <a href="#home" class="nav-brand">Pauls Restaurant</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home">
+            <div class="hero-content">
+                <h1>Authentic American Diner Experience</h1>
+                <p>Serving the best burgers, shakes, and desserts in Howick, Auckland.</p>
+                <a href="#menu" class="btn">View Our Menu</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2>Welcome to Pauls</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>A Taste of America in the Heart of Howick</h3>
+                        <p>Pauls Restaurant is a family-owned diner dedicated to bringing the classic American dining experience to Auckland. Founded by Lloyd Brown, our passion is simple: serve delicious, comforting food that brings people together.</p>
+                        <p>We specialise in handcrafted burgers, thick milkshakes, and a wide array of decadent desserts, all made with fresh, locally-sourced ingredients. Whether you're craving a juicy cheeseburger, crispy loaded fries, or a slice of homemade apple pie, we've got something to satisfy your taste buds.</p>
+                        <p>Come on in, take a seat in one of our cozy booths, and let us treat you to a meal you won't forget. We're more than just a restaurant; we're a place for friends and family to make memories.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1579752045513-338a8b3554a4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Interior of a classic American diner" class="about-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Services / Menu Highlights Section -->
+        <section id="menu">
+            <div class="container">
+                <h2>Our Specialties</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="icon">🍔</span>
+                        <h3>Gourmet Burgers</h3>
+                        <p>Juicy, handcrafted patties with fresh toppings on a toasted brioche bun. A true classic, perfected.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="icon">🍟</span>
+                        <h3>Loaded Fries</h3>
+                        <p>Crispy golden fries smothered in cheese, bacon, and our secret sauce. Perfect for sharing!</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="icon">🥤</span>
+                        <h3>Classic Milkshakes</h3>
+                        <p>Thick, creamy, and delicious. Made with real ice cream in all your favourite flavours.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="icon">🌭</span>
+                        <h3>All-American Hot Dogs</h3>
+                        <p>Classic dogs with a variety of toppings, from simple mustard and ketchup to chili cheese.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="icon">🥞</span>
+                        <h3>Pancakes & Waffles</h3>
+                        <p>Fluffy buttermilk pancakes and crispy waffles served all day with maple syrup and butter.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="icon">🍰</span>
+                        <h3>Decadent Desserts</h3>
+                        <p>From New York cheesecake to warm apple pie, our homemade desserts are the perfect finish.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials">
+            <div class="container">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="quote">"The best burgers in East Auckland! The milkshakes are a must-try. Feels like a real American diner."</p>
+                        <p class="author">- Sarah J.</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="quote">"Took the family here for a weekend treat. The service was fantastic, and the dessert menu is incredible. We'll be back for the waffles!"</p>
+                        <p class="author">- Mark T.</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="quote">"A hidden gem in Howick. The loaded fries are legendary. Great atmosphere and friendly staff. Highly recommend for a casual meal."</p>
+                        <p class="author">- Chloe P.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Visit Us or Give Us a Call</h3>
+                        <p>We'd love to hear from you! For bookings or any inquiries, please don't hesitate to contact us. We are located in the heart of Howick.</p>
+                        <ul>
+                            <li><span>📍</span><p><strong>Address:</strong><br>47 Elliot Street, Howick, Auckland, 2014, New Zealand</p></li>
+                            <li><span>📞</span><p><strong>Phone:</strong><br><a href="tel:021721889">021721889</a></p></li>
+                            <li><span>✉️</span><p><strong>Email:</strong><br><a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></p></li>
+                            <li><span>👨‍💼</span><p><strong>Owner:</strong><br>Lloyd Brown</p></li>
+                        </ul>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=47 Elliot Street, Howick, Auckland, 2014, New Zealand" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Pauls Restaurant. All Rights Reserved. A Taste of America in Auckland.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navLinks.classList.toggle("active");
+        });
+
+        document.querySelectorAll(".nav-links a").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navLinks.classList.remove("active");
+        }));
+    </script>
+
+</body>
+</html>
+```
