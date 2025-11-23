@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerald Restaurant - American Diner in Howick, Auckland</title>
+    <style>
+        /* CSS Reset and Global Styles */
+        :root {
+            --primary-color: #D92323; /* Diner Red */
+            --secondary-color: #F2E8DC; /* Creamy White */
+            --accent-color: #0D0D0D; /* Charcoal Black */
+            --text-color: #333;
+            --light-text-color: #F2E8DC;
+            --font-heading: 'Oswald', sans-serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--accent-color);
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--light-text-color);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(13, 13, 13, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--light-text-color);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text-color);
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+            font-size: 1rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+
+        .nav-links a:hover, .nav-links a:focus {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a:hover::after, .nav-links a:focus::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: var(--light-text-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-text-color);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 1rem auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(217, 35, 35, 0.5);
+        }
+        
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Menu Section */
+        #menu {
+            background-color: #fff;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .menu-item-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--accent-color);
+            text-align: right;
+        }
+        
+        /* Contact Section */
+        #contact {
+             background-color: #fff;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info strong {
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--accent-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 5rem;
+                flex-direction: column;
+                background-color: var(--accent-color);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1; /* Puts image on top on mobile */
+            }
+        }
+
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="nav-logo">Gerald's</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Gerald Restaurant</h1>
+                <p>Authentic American Diner Food & Desserts in the Heart of Howick, Auckland.</p>
+                <a href="#menu" class="btn">View Our Menu</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>A Taste of America</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <h3>Welcome to Gerald's!</h3>
+                        <p>Founded by food enthusiast Lloyd Brown, Gerald Restaurant brings the classic American diner experience to Howick, Auckland. We're passionate about serving up delicious, hearty food that feels both nostalgic and exciting.</p>
+                        <p>Our mission is simple: to create a friendly, welcoming spot where families and friends can gather to enjoy high-quality comfort food. From juicy burgers to decadent milkshakes and homemade desserts, every dish is prepared with love and the finest local ingredients.</p>
+                        <p>Come on in, take a seat, and let us treat you to a meal you won't forget!</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="A delicious juicy burger">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu">
+            <div class="container">
+                <h2>Our Specialties</h2>
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <div class="menu-item-icon">🍔</div>
+                        <h3>Classic Burgers</h3>
+                        <p>Juicy beef patties, fresh lettuce, ripe tomatoes, and our secret sauce, all tucked into a toasted brioche bun.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-icon">🍟</div>
+                        <h3>Loaded Fries</h3>
+                        <p>Crispy golden fries smothered in melted cheese, bacon bits, sour cream, and fresh chives.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-icon">🥤</div>
+                        <h3>Thickshakes</h3>
+                        <p>Creamy, hand-spun milkshakes available in classic flavours like chocolate, strawberry, and vanilla.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-icon">🥞</div>
+                        <h3>Pancake Stacks</h3>
+                        <p>Fluffy buttermilk pancakes served with maple syrup and a dollop of whipped butter. A perfect treat any time of day.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-icon">🥧</div>
+                        <h3>Homemade Apple Pie</h3>
+                        <p>A slice of classic Americana. Sweet, cinnamon-spiced apples in a flaky crust, served warm with ice cream.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-icon">🌭</div>
+                        <h3>Gourmet Hot Dogs</h3>
+                        <p>All-beef franks in a soft bun, topped with your choice of classic or creative toppings.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p>"Absolutely the best burger I've had in Auckland! The atmosphere is fantastic and the staff are so friendly. The milkshakes are a must-try. We'll definitely be back!"</p>
+                        <p class="testimonial-author">- Sarah J.</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Took the family here for a weekend lunch and it was a huge hit. The kids loved the pancakes and my loaded fries were incredible. It's great to have a place like this in Howick."</p>
+                        <p class="testimonial-author">- Mark T.</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"A true hidden gem! The dessert menu is to die for, especially the apple pie. It feels like stepping back in time into a proper American diner. Highly recommended."</p>
+                        <p class="testimonial-author">- Emily C.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Visit Us or Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Our Details</h3>
+                        <p>Come and find us in the heart of Howick. We're ready to serve you the best diner food in town!</p>
+                        <p><strong>Owner:</strong><br> Lloyd Brown</p>
+                        <p><strong>Phone:</strong><br> <a href="tel:021721889">021721889</a></p>
+                        <p><strong>Email:</strong><br> <a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></p>
+                        <p><strong>Address:</strong><br> 47 Elliot Street, Howick, Auckland, 2014, New Zealand</p>
+                    </div>
+                    <div class="contact-map">
+                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=47 Elliot Street, Howick, Auckland, 2014, New Zealand" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Gerald Restaurant. All Rights Reserved.</p>
+            <p>Owned and operated by Lloyd Brown.</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const links = document.querySelectorAll('.nav-links li a');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
