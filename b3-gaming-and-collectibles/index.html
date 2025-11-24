@@ -1,0 +1,531 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B3 Gaming And Collectibles | Auckland Toy & Hobby Shop</title>
+    <meta name="description" content="B3 Gaming And Collectibles is a hobby shop in Howick, Auckland, specialising in toys for kids, adult collectibles, and game consoles.">
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #f59e0b;
+            --dark-bg: #111827;
+            --light-bg: #1f2937;
+            --text-light: #f3f4f6;
+            --text-dark: #9ca3af;
+            --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --border-radius: 8px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* --- Global Elements & Utilities --- */
+        .container {
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: white;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            color: var(--secondary-color);
+            margin-bottom: 3rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #fbbf24;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #6366f1;
+            transform: translateY(-2px);
+        }
+
+        /* --- Header & Navigation --- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(17, 24, 39, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--light-bg);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+            border-bottom-color: var(--secondary-color);
+        }
+
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .nav-toggle .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: white;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            background: linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><rect fill="%23111827" width="800" height="800"/><g fill-opacity="0.4"><circle fill="%231f2937" cx="400" cy="400" r="600"/><circle fill="%234f46e5" cx="400" cy="400" r="500"/><circle fill="%231f2937" cx="400" cy="400" r="400"/><circle fill="%23f59e0b" cx="400" cy="400" r="300"/><circle fill="%231f2937" cx="400" cy="400" r="200"/><circle fill="%23111827" cx="400" cy="400" r="100"/></g></svg>');
+            background-size: cover;
+            background-position: center center;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-light);
+        }
+
+        /* --- About Section --- */
+        #about .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+        }
+        
+        #about p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        /* --- Services Section --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--light-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px solid #374151;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--light-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .testimonial-card blockquote {
+            font-style: italic;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card cite {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        /* --- Contact Section --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .contact-info ul {
+            list-style: none;
+        }
+
+        .contact-info li {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-info li strong {
+            display: inline-block;
+            width: 80px;
+            color: var(--secondary-color);
+        }
+        
+        .contact-info li span {
+            flex: 1;
+        }
+
+        .map-container iframe {
+            border-radius: var(--border-radius);
+            width: 100%;
+            height: 350px;
+        }
+        
+        /* --- Footer --- */
+        footer {
+            background-color: var(--light-bg);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #374151;
+        }
+
+        footer p {
+            margin: 0;
+            color: var(--text-dark);
+        }
+        
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            section { padding: 3rem 0; }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--dark-bg);
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-in-out;
+            }
+
+            .nav-links.active {
+                max-height: 300px;
+                padding-bottom: 1rem;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid var(--light-bg);
+            }
+            .nav-links a:hover {
+                border-bottom-color: transparent;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-toggle.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .nav-toggle.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .nav-toggle.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="#hero" class="nav-logo">B3 Gaming</a>
+            <nav>
+                <ul class="nav-links" id="nav-menu">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>B3 Gaming And Collectibles</h1>
+                    <p>Auckland's premier destination for toys, adult collectibles, and video games. Your next great find is waiting for you!</p>
+                    <a href="#contact" class="btn">Visit Our Store</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>Your Local Hobby Haven</h2>
+                <p>Welcome to B3 Gaming And Collectibles, a passion project brought to life by owner Lloyd Brown. Located in the heart of Howick, we are a friendly, local hobby shop dedicated to serving the community of collectors, gamers, and families. We believe in the joy of play and the thrill of the find, offering a carefully curated selection of items that appeal to both the young and the young-at-heart.</p>
+                <p>From the latest game consoles to rare vintage toys and sought-after adult collectibles, our mission is to be a place where everyone can share their passion. Come on in, say hello, and discover something amazing!</p>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2>What We Offer</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <span class="service-icon">🎮</span>
+                        <h3>Game Consoles & Accessories</h3>
+                        <p>We stock a wide range of new and pre-owned consoles, from the latest generation to retro classics, plus all the controllers and accessories you need.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">🧸</span>
+                        <h3>Toys for All Ages</h3>
+                        <p>Discover a magical selection of toys for kids, including educational games, action figures, dolls, and building blocks from your favorite brands.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">🤖</span>
+                        <h3>Adult Collectibles</h3>
+                        <p>For the serious collector, we offer a curated range of high-quality action figures, statues, model kits, and pop culture memorabilia.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">🧩</span>
+                        <h3>Puzzles & Board Games</h3>
+                        <p>Bring family and friends together with our extensive collection of board games, card games, and challenging puzzles for every skill level.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">🔄</span>
+                        <h3>Trade-Ins & Sales</h3>
+                        <p>Looking to upgrade or clear out some space? We offer fair prices for your pre-loved games, consoles, and collectibles.</p>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-icon">💬</span>
+                        <h3>Expert Advice</h3>
+                        <p>Owner Lloyd Brown and our team are passionate hobbyists, ready to help you find the perfect item or just chat about the latest releases.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <blockquote>"A true gem in Howick! Lloyd is incredibly knowledgeable and friendly. I found a rare collectible I've been searching for for years. This is my new go-to shop."</blockquote>
+                        <cite>— Mark T.</cite>
+                    </div>
+                    <div class="testimonial-card">
+                        <blockquote>"I brought my kids in to look for a birthday present and was amazed by the selection. They have everything from modern toys to classic video games. We left with smiles on our faces!"</blockquote>
+                        <cite>— Sarah P.</cite>
+                    </div>
+                    <div class="testimonial-card">
+                        <blockquote>"Finally, a proper hobby shop on this side of town! The store is clean, well-organized, and the prices are very fair. Highly recommend for any gamer or collector."</blockquote>
+                        <cite>— David L.</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Find Us & Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Visit Our Store</h3>
+                        <p>We're excited to welcome you to our shop in Howick. Feel free to call or email us with any questions about our stock or services.</p>
+                        <ul>
+                            <li><strong>Address:</strong> <span>47 Elliot Street<br>Howick, Auckland, 2014<br>New Zealand</span></li>
+                            <li><strong>Phone:</strong> <span><a href="tel:021721889">021721889</a></span></li>
+                            <li><strong>Email:</strong> <span><a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></span></li>
+                            <li><strong>Owner:</strong> <span>Lloyd Brown</span></li>
+                        </ul>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=47 Elliot Street, Howick, Auckland, 2014, New Zealand" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 B3 Gaming And Collectibles. All Rights Reserved.</p>
+            <p>Owned and operated by Lloyd Brown.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+
+            // Mobile menu toggle
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                    navToggle.classList.toggle('active');
+                });
+            }
+
+            // Close mobile menu when a link is clicked
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        navToggle.classList.remove('active');
+                    }
+                });
+            });
+
+            // Smooth scroll for anchor links (redundant with CSS scroll-behavior, but good for older browsers)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>null
