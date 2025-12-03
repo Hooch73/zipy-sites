@@ -1,0 +1,582 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harolds Gym - Strength & Balance for Retirees in Howick</title>
+    <style>
+        /* --- Google Font Import --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-color: #005f73;
+            --secondary-color: #0a9396;
+            --accent-color: #ee9b00;
+            --light-bg: #f8f9fa;
+            --dark-text: #343a40;
+            --light-text: #ffffff;
+            --border-radius: 8px;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--dark-text);
+            background-color: #fff;
+        }
+
+        /* --- Utility Classes --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            background-color: #ca8500;
+            transform: translateY(-3px);
+        }
+
+        /* --- Navigation Bar --- */
+        .navbar {
+            background: var(--light-text);
+            color: var(--dark-text);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .navbar .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar .nav-links li {
+            margin-left: 25px;
+        }
+
+        .navbar .nav-links a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover, .navbar .nav-links a.active {
+            color: var(--accent-color);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: var(--dark-text);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background-image: linear-gradient(rgba(0, 95, 115, 0.7), rgba(0, 95, 115, 0.7)), url('https://images.unsplash.com/photo-1593810452238-751b710c3e66?q=80&w=1974&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-text);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* --- About Section --- */
+        #about {
+            background-color: var(--light-bg);
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text, .team-info {
+            flex: 1;
+        }
+
+        .team-info {
+            background: #fff;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .team-info h3 {
+            margin-top: 0;
+        }
+        
+        .team-info p {
+            margin-bottom: 5px;
+        }
+
+        /* --- Services Section --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #fff;
+            padding: 30px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+        }
+        
+        /* --- FAQ Section --- */
+        #faq {
+            background-color: var(--light-bg);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #fff;
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .faq-item summary {
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 20px;
+            cursor: pointer;
+            list-style: none; /* For Safari */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-item summary::-webkit-details-marker {
+            display: none; /* For Chrome */
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-item div {
+            padding: 0 20px 20px;
+        }
+
+        /* --- Contact Section --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .contact-info, .operating-hours {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+        }
+
+        .contact-info h3, .operating-hours h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-info svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            fill: var(--primary-color);
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .hours-list span {
+            font-weight: 600;
+        }
+
+        .map-container iframe {
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-text);
+            color: var(--light-text);
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        footer p {
+            margin: 0;
+        }
+        
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            
+            .navbar .nav-links {
+                position: absolute;
+                top: 100%;
+                left: -100%;
+                width: 100%;
+                flex-direction: column;
+                background: white;
+                text-align: center;
+                transition: left 0.3s ease;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            .navbar .nav-links.active {
+                left: 0;
+            }
+
+            .navbar .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">Harolds Gym</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#faq">FAQs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Maintain Strength, Master Balance, Live Fully</h1>
+            <p>Your dedicated boutique gym in Howick for a healthy, happy, and active retirement.</p>
+            <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Harolds Gym</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Harolds Gym is a boutique fitness studio in Howick, Auckland, catering specifically to retired people. Our mission is to help you retain essential strength and balance, ensuring you can continue to live a healthy, happy, and independent lifestyle.</p>
+                    <p>We provide a supportive, friendly, and non-intimidating environment where you can focus on your physical well-being. Whether you're looking to maintain your quality of life, prevent falls, or simply stay active and social, we have the expertise and programs to help you achieve your goals.</p>
+                </div>
+                <div class="team-info">
+                    <h3>Our Specialist Trainer</h3>
+                    <p><strong>Lloyd Brown</strong></p>
+                    <p>Qualified Personal Trainer with 15 years of experience, specialising in strength and balance for seniors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon">🏋️‍♀️</div>
+                    <h3>One-on-One Sessions</h3>
+                    <p>Personalised training sessions tailored to your individual needs and fitness goals for maximum results.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🤸‍♂️</div>
+                    <h3>Balance & Stability</h3>
+                    <p>Focused exercises and routines designed to improve your stability, confidence, and reduce the risk of falls.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🧘‍♀️</div>
+                    <h3>Group Exercise Classes</h3>
+                    <p>Join our fun and social group classes on Tuesdays and Thursdays to build strength and connect with others.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🤝</div>
+                    <h3>Couple & Friends Training</h3>
+                    <p>Stay motivated by training with your partner or friends in small, private group sessions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary>Do you do one on one sessions?</summary>
+                    <div>
+                        <p>Yes we cater to single people, couples, and groups of friends. Our one-on-one sessions are perfect for getting a personalised plan that focuses on your specific goals.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>Do you have classes?</summary>
+                    <div>
+                        <p>Yes we have classes Tue and Thur at 11am in the morning at our gym. These are a great way to stay motivated and socialise while you exercise.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact & Visit Us</h2>
+            <div class="contact-grid">
+                <div>
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+                            <a href="tel:+121721889">+121721889</a>
+                        </p>
+                        <p>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+                            <a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a>
+                        </p>
+                        <p>
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+                           <span>29a Patons Road, Howick<br>Auckland 2014, New Zealand</span>
+                        </p>
+                    </div>
+                    <div class="operating-hours" style="margin-top: 30px;">
+                        <h3>Operating Hours</h3>
+                        <ul class="hours-list">
+                            <li><span>Monday:</span> 09:00 - 17:00</li>
+                            <li><span>Tuesday:</span> 09:00 - 17:00</li>
+                            <li><span>Wednesday:</span> 09:00 - 17:00</li>
+                            <li><span>Thursday:</span> 09:00 - 17:00</li>
+                            <li><span>Friday:</span> 09:00 - 15:00</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=29a Patons Road Howick 2014 Auckland New Zealand" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Harolds Gym. All Rights Reserved. Owned by Tom.</p>
+        </div>
+    </footer>
+    
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const links = navLinks.querySelectorAll('a');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>null
