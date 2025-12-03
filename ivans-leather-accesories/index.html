@@ -1,0 +1,453 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ivans Leather Accesories - Auckland</title>
+    <style>
+        /* --- CSS Reset & Basic Styles --- */
+        :root {
+            --primary-color: #8B4513; /* Saddle Brown */
+            --secondary-color: #D2B48C; /* Tan */
+            --dark-color: #2c1e12;
+            --light-color: #fdfaf6;
+            --text-color: #333;
+            --accent-color: #c5a47e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--light-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 2rem;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Garamond', 'Times New Roman', serif;
+            color: var(--dark-color);
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-divider {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--secondary-color), rgba(0, 0, 0, 0));
+        }
+
+        /* --- Navigation Bar --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            padding: 1rem 2rem;
+            background: rgba(44, 30, 18, 0.9);
+            z-index: 1000;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .navbar .logo {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: 'Garamond', serif;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-152459271464c-347e30379b33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid var(--primary-color);
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: var(--dark-color);
+        }
+        
+        /* --- About Section --- */
+        #about .container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        #about .about-text {
+            flex: 1;
+        }
+        #about .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        #about .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        #about .about-text .tagline {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-top: 1rem;
+        }
+        
+        /* --- Services Section --- */
+        #services {
+            background-color: #fff;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        .service-card {
+            padding: 2rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .service-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* --- Contact Section --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .contact-info, .contact-map {
+            padding: 1.5rem;
+        }
+        .contact-info p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .contact-info strong {
+            color: var(--dark-color);
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        .hours-list {
+            list-style: none;
+            padding: 0;
+        }
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        .hours-list li span:last-child {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .contact-map iframe {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-color);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        /* --- Mobile Responsiveness --- */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .menu-toggle .bar {
+            height: 3px;
+            width: 25px;
+            background-color: white;
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        @media(max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 65px;
+                left: 0;
+                background: rgba(44, 30, 18, 0.95);
+                text-align: center;
+            }
+
+            .navbar ul.active {
+                display: flex;
+            }
+
+            .navbar ul li {
+                padding: 1rem 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            #about .container, .contact-grid {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+            }
+
+            .contact-map {
+                margin-top: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="#home" class="logo">Ivans Leather Accesories</a>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Ivans Leather Accesories</h1>
+            <p>Handcrafted Leather Goods with Passion and Precision</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-text">
+                <h2>About Us</h2>
+                <p>Welcome to Ivans Leather Accesories, where timeless craftsmanship meets modern style. Ivan designs and creates unique, high-quality leather goods that are built to last. Each piece, from our rugged belts to our elegant bracelets and necklaces, is meticulously handcrafted with attention to detail.</p>
+                <p>We believe in the beauty and durability of genuine leather, and our passion is to provide you with accessories that not only look good but also tell a story. We source the finest materials to ensure every product is a work of art.</p>
+                <p class="tagline">Proudly NZ Owned.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1621932936421-76a588b8909d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Leather crafting tools">
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon">📏</div>
+                    <h3>Custom Leather Belts</h3>
+                    <p>Bespoke belts tailored to your exact size and style. Choose from a variety of leathers, buckles, and finishes for a truly personal accessory.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🖐️</div>
+                    <h3>Handcrafted Bracelets</h3>
+                    <p>Discover our collection of unique leather bracelets, from minimalist bands to intricate woven designs, perfect for any occasion.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">💎</div>
+                    <h3>Unique Leather Necklaces</h3>
+                    <p>Make a statement with our distinctive leather necklaces, combining natural materials with artistic design for a bold and stylish look.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🛠️</div>
+                    <h3>Accessory Repair & Restoration</h3>
+                    <p>Breathe new life into your cherished leather items. We offer professional repair and restoration services to keep your accessories looking their best.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <hr class="section-divider">
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>We'd love to hear from you. Visit our workshop or contact us for custom orders and inquiries.</p>
+                    <p><strong>Owner:</strong> Ivan putin</p>
+                    <p><strong>Address:</strong> 2 rosses place, pinehill auckland 0632</p>
+                    <p><strong>Phone:</strong> <a href="tel:+64211045421">+64211045421</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:bradk4100@gmail.com">bradk4100@gmail.com</a></p>
+                    
+                    <h3>Operating Hours</h3>
+                    <ul class="hours-list">
+                        <li><span>Monday</span> <span>10:00 AM - 6:00 PM</span></li>
+                        <li><span>Tuesday</span> <span>10:00 AM - 6:00 PM</span></li>
+                        <li><span>Wednesday</span> <span>10:00 AM - 6:00 PM</span></li>
+                        <li><span>Thursday</span> <span>10:00 AM - 6:00 PM</span></li>
+                        <li><span>Friday</span> <span>10:00 AM - 6:00 PM</span></li>
+                        <li><span>Saturday</span> <span>Closed</span></li>
+                        <li><span>Sunday</span> <span>Closed</span></li>
+                    </ul>
+                </div>
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=17 Honeysuckle Lane" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Ivans Leather Accesories. All Rights Reserved.</p>
+            <p>Owned by Ivan putin</p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when a link is clicked
+        const links = document.querySelectorAll('.nav-links li a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>null
