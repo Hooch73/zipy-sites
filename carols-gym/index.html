@@ -1,0 +1,596 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carols Gym - Strength & Balance in Howick, Auckland</title>
+    <style>
+        /* --- Reset & Base Styles --- */
+        :root {
+            --primary-color: #2c5b76; /* A calming, strong blue */
+            --secondary-color: #5aa469; /* A vibrant, healthy green */
+            --accent-color: #f2a154; /* A warm, inviting orange */
+            --text-color: #333333;
+            --light-gray: #f7f7f7;
+            --white: #ffffff;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        /* --- Utility & Layout --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--light-gray);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        /* --- Navigation --- */
+        .navbar {
+            background: var(--white);
+            color: var(--text-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background 0.3s ease;
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--secondary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #4a8e59;
+            transform: translateY(-2px);
+        }
+        
+        /* --- About Section --- */
+        #about .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        /* --- Services Section --- */
+        #services .grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* --- Team Section --- */
+        #team .team-member {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .team-member h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .team-member .title {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        /* --- FAQ Section --- */
+        #faq .faq-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--secondary-color);
+        }
+        
+        .faq-item summary {
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 20px;
+            cursor: pointer;
+            list-style: none; /* Hide default marker */
+            position: relative;
+            color: var(--primary-color);
+        }
+        
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            font-size: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .faq-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+        
+        .faq-item .faq-answer {
+            padding: 0 20px 20px;
+            color: #555;
+        }
+        
+        /* --- Hours and Contact Section --- */
+        #contact-hours {
+            padding-bottom: 0;
+        }
+        
+        .contact-hours-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .hours-card, .contact-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-hours-grid h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        
+        .hours-list {
+            list-style: none;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .hours-list .day {
+            font-weight: 600;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+        
+        .contact-list li {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .contact-list a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-list a:hover {
+            color: var(--primary-color);
+        }
+        
+        .map-container {
+            margin-top: 60px;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.5s ease-in-out;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.nav-active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .nav-toggle {
+                display: block;
+                z-index: 1001; /* Above the nav links */
+            }
+            
+            .nav-toggle.toggle .line1 {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .nav-toggle.toggle .line2 {
+                opacity: 0;
+            }
+            .nav-toggle.toggle .line3 {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            .nav-toggle div {
+                width: 25px;
+                height: 3px;
+                background-color: var(--primary-color);
+                margin: 5px;
+                transition: all 0.3s ease;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            #about .container {
+                text-align: center;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .contact-hours-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="navbar">
+        <div class="container">
+            <a href="#home" class="nav-logo">Carols Gym</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#team">Our Trainer</a></li>
+                <li><a href="#faq">FAQs</a></li>
+                <li><a href="#contact-hours">Contact</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Stay Strong, Live Fully</h1>
+            <p>Your dedicated space in Howick for maintaining strength, balance, and a vibrant, healthy lifestyle in retirement.</p>
+            <a href="#contact-hours" class="btn">Join Us Today</a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-text">
+                <h2 class="section-title">Welcome to Carols Gym</h2>
+                <p>Owned and operated by Tom, Carols Gym is a boutique fitness studio in Howick, Auckland, catering specifically to the needs of our retired community. We believe that age is just a number, and maintaining physical health is the key to a happy, independent life.</p>
+                <p>Our focus is on creating a friendly, supportive, and non-intimidating environment where you can comfortably work on retaining your strength and improving your balance. We're here to help you enjoy your golden years to the fullest, with confidence and vitality.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1593810452236-794c48907604?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Active seniors exercising">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">How We Can Help</h2>
+            <div class="grid">
+                <div class="service-card">
+                    <div class="icon">🏋️‍♀️</div>
+                    <h3>One-on-One Training</h3>
+                    <p>Receive personalized attention and a custom-built fitness plan tailored to your specific goals and abilities.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🧘‍♂️</div>
+                    <h3>Group Strength Classes</h3>
+                    <p>Join our fun and social group classes on Tuesdays and Thursdays to build strength in a motivating community setting.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🤸‍♀️</div>
+                    <h3>Balance & Stability</h3>
+                    <p>Specialized exercises designed to improve your balance, prevent falls, and increase your confidence in daily activities.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🧑‍🤝‍🧑</div>
+                    <h3>Couples & Friends Sessions</h3>
+                    <p>Stay motivated together! We offer tailored sessions for couples or small groups of friends to train together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section id="team">
+        <div class="container">
+            <h2 class="section-title">Meet Our Trainer</h2>
+            <div class="team-member">
+                <h3>Lloyd Brown</h3>
+                <p class="title">Qualified Personal Trainer</p>
+                <p>With 15 years of experience, Lloyd specialises in strength and balance training for the retired community. His patient and knowledgeable approach ensures you get the safest, most effective workout every time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary>Do you do one on one sessions?</summary>
+                    <div class="faq-answer">
+                        <p>Yes we cater to single people, couples, and groups of friends. Our one-on-one sessions are perfect for creating a personalized plan to meet your unique fitness goals.</p>
+                    </div>
+                </details>
+                <details class="faq-item">
+                    <summary>Do you have classes?</summary>
+                    <div class="faq-answer">
+                        <p>Yes we have classes every Tuesday and Thursday at 11am in the morning at our gym. These are a great way to stay active and socialize with other members.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours & Contact Section -->
+    <section id="contact-hours">
+        <div class="container">
+             <h2 class="section-title">Visit or Contact Us</h2>
+             <div class="contact-hours-grid">
+                 <div class="hours-card">
+                    <h3>Operating Hours</h3>
+                    <ul class="hours-list">
+                        <li><span class="day">Monday</span> <span>09:00 - 17:00</span></li>
+                        <li><span class="day">Tuesday</span> <span>09:00 - 17:00</span></li>
+                        <li><span class="day">Wednesday</span> <span>09:00 - 17:00</span></li>
+                        <li><span class="day">Thursday</span> <span>09:00 - 17:00</span></li>
+                        <li><span class="day">Friday</span> <span>09:00 - 15:00</span></li>
+                        <li><span class="day">Saturday</span> <span>Closed</span></li>
+                        <li><span class="day">Sunday</span> <span>Closed</span></li>
+                    </ul>
+                 </div>
+                 <div class="contact-card">
+                    <h3>Contact Details</h3>
+                    <ul class="contact-list">
+                        <li><strong>📞 Phone:</strong> <a href="tel:+121721889">+121721889</a></li>
+                        <li><strong>📧 Email:</strong> <a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></li>
+                        <li><strong>📍 Address:</strong><br>29a Patons Road, Howick<br>Auckland 2014, New Zealand</li>
+                    </ul>
+                 </div>
+             </div>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=29a Patons Road Howick 2014 Auckland New Zealand" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Carols Gym. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            navToggle.classList.toggle('toggle');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('nav-active')) {
+                    navLinks.classList.remove('nav-active');
+                    navToggle.classList.remove('toggle');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>null
