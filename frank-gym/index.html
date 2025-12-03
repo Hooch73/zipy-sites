@@ -1,0 +1,659 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frank Gym | Strength & Balance for Seniors in Howick, Auckland</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --color-primary: #2c3e50;
+            --color-secondary: #fdf6e3;
+            --color-accent: #d35400;
+            --color-text: #34495e;
+            --color-light-text: #7f8c8d;
+            --color-white: #ffffff;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text);
+            background-color: var(--color-secondary);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 2rem; text-align: center; }
+        h3 { font-size: 1.5rem; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-separator {
+            position: relative;
+            height: 100px;
+            overflow: hidden;
+        }
+
+        .section-separator::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background-color: var(--color-secondary);
+            clip-path: polygon(0 100%, 100% 0, 100% 100%);
+        }
+
+        .section-separator.inverted::before {
+             background-color: var(--color-white);
+             clip-path: polygon(0 0, 100% 100%, 0 100%);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: background-color 0.3s ease, padding 0.3s ease;
+            padding: 20px 0;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(44, 62, 80, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-white);
+            text-decoration: none;
+        }
+        
+        .nav-logo span {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--color-white);
+        }
+
+        /* Hero Section */
+        #home {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/1600x900/?senior,fitness,active') no-repeat center center/cover;
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            color: var(--color-white);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+        }
+
+        /* About Section */
+        #about { background-color: var(--color-secondary); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Services Section */
+        #services { background-color: var(--color-white); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background-color: var(--color-secondary);
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        .service-card .icon {
+            font-size: 3rem;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+        }
+        .service-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* Team Section */
+        #team { background-color: var(--color-secondary); }
+        .team-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--color-white);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        .team-image {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+        }
+        .team-info {
+            padding: 30px;
+        }
+        .team-info h3 {
+            margin-bottom: 0.5rem;
+        }
+        .team-info .title {
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        /* FAQ Section */
+        #faq { background-color: var(--color-white); }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .faq-item summary {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 20px 0;
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+            padding-right: 30px;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-item summary::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.3s ease;
+        }
+        .faq-item[open] summary::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+        .faq-answer {
+            padding-bottom: 20px;
+            color: var(--color-light-text);
+        }
+
+        /* Contact Section */
+        #contact { background-color: var(--color-secondary); }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: flex-start;
+        }
+        .contact-details h3, .contact-form h3 {
+            margin-bottom: 1.5rem;
+        }
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .contact-info-item i {
+            font-size: 1.2rem;
+            color: var(--color-accent);
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+        }
+        .hours-table {
+            width: 100%;
+            margin: 2rem 0;
+            border-collapse: collapse;
+        }
+        .hours-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .hours-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: var(--font-body);
+            background-color: var(--color-white);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .map-container {
+            margin-top: 2rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-primary);
+            color: var(--color-secondary);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* Animation */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-image {
+                margin-top: 30px;
+                order: 2;
+            }
+            .team-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .team-image {
+                width: 100%;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            section { padding: 60px 0; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: var(--color-primary);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.5s ease;
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links li {
+                margin: 20px 0;
+            }
+            .nav-toggle {
+                display: block;
+                z-index: 1001; /* Above nav-links */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar" id="navbar">
+        <div class="container">
+            <a href="#home" class="nav-logo">Frank Gym<span>.</span></a>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="hero-content animate-on-scroll">
+                <h1>Rediscover Your Strength. Reclaim Your Balance.</h1>
+                <p>A boutique gym in Howick catering specifically to retired people looking to retain strength and balance for a healthy, happy lifestyle.</p>
+                <a href="#contact" class="btn">Book a Consultation</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="about-grid animate-on-scroll">
+                    <div class="about-text">
+                        <h2>Your Partner in Healthy Aging</h2>
+                        <p>Frank Gym is a unique, boutique fitness space in Howick, Auckland, founded by Tom. We are dedicated to the health and well-being of the retired community. Our mission is to provide a supportive, welcoming environment where you can focus on retaining essential strength and balance. We believe that an active lifestyle is key to a happy and independent retirement, and our tailored programs are designed to help you maintain your physical quality of life to live every day to the fullest.</p>
+                    </div>
+                    <div class="about-image-container">
+                        <img src="https://source.unsplash.com/800x600/?senior,yoga,group" alt="Group of seniors in a fitness class" class="about-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-separator inverted"></div>
+
+        <section id="services" style="background-color: var(--color-white);">
+            <div class="container">
+                <h2 class="animate-on-scroll">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card animate-on-scroll">
+                        <div class="icon"><i class="fas fa-user"></i></div>
+                        <h3>One-on-One Sessions</h3>
+                        <p>Receive personalized attention with training plans tailored specifically to your individual goals, needs, and fitness level.</p>
+                    </div>
+                    <div class="service-card animate-on-scroll">
+                        <div class="icon"><i class="fas fa-users"></i></div>
+                        <h3>Group Exercise Classes</h3>
+                        <p>Join our friendly and motivating strength and balance classes. A great way to stay active, meet new people, and have fun.</p>
+                    </div>
+                    <div class="service-card animate-on-scroll">
+                        <div class="icon"><i class="fas fa-feather-alt"></i></div>
+                        <h3>Balance & Stability</h3>
+                        <p>Specialized exercises designed to improve your stability, build confidence, and reduce the risk of falls in a safe environment.</p>
+                    </div>
+                     <div class="service-card animate-on-scroll">
+                        <div class="icon"><i class="fas fa-heartbeat"></i></div>
+                        <h3>Lifestyle Maintenance</h3>
+                        <p>Our programs focus on maintaining the physical quality of life necessary to enjoy your retirement and live a full, independent life.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="section-separator"></div>
+
+        <section id="team">
+            <div class="container">
+                <h2 class="animate-on-scroll">Meet Your Trainer</h2>
+                <div class="team-card animate-on-scroll">
+                    <img src="https://source.unsplash.com/400x600/?personal,trainer,portrait" alt="Portrait of Lloyd Brown" class="team-image">
+                    <div class="team-info">
+                        <h3>Lloyd Brown</h3>
+                        <p class="title">Qualified Personal Trainer</p>
+                        <p>With 15 years of experience, Lloyd specialises in strength and balance training for the senior community. He is passionate about helping his clients achieve their health goals safely and effectively.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-separator inverted"></div>
+
+        <section id="faq" style="background-color: var(--color-white);">
+            <div class="container">
+                <h2 class="animate-on-scroll">Frequently Asked Questions</h2>
+                <div class="faq-container animate-on-scroll">
+                    <details class="faq-item">
+                        <summary>Do you do one on one sessions?</summary>
+                        <div class="faq-answer">
+                            <p>Yes we cater to single people, couples, and groups of friends. Our one-on-one sessions are perfect for a fully personalized approach to your fitness.</p>
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Do you have classes?</summary>
+                        <div class="faq-answer">
+                            <p>Yes we have classes on Tuesdays and Thursdays at 11:00 AM in the morning at our gym. They are a fantastic way to exercise in a supportive group setting.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-separator"></div>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="animate-on-scroll">Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-details animate-on-scroll">
+                        <h3>Visit Us or Give Us a Call</h3>
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>29a Patons Road, Howick, 2014 Auckland, New Zealand</p>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone"></i>
+                            <p>+121721889</p>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>lloyd@pungatrading.com</p>
+                        </div>
+                        
+                        <h3>Operating Hours</h3>
+                        <table class="hours-table">
+                            <tbody>
+                                <tr><td>Monday</td><td>09:00 AM - 05:00 PM</td></tr>
+                                <tr><td>Tuesday</td><td>09:00 AM - 05:00 PM</td></tr>
+                                <tr><td>Wednesday</td><td>09:00 AM - 05:00 PM</td></tr>
+                                <tr><td>Thursday</td><td>09:00 AM - 05:00 PM</td></tr>
+                                <tr><td>Friday</td><td>09:00 AM - 03:00 PM</td></tr>
+                                <tr><td>Saturday</td><td>09:00 AM - 05:00 PM</td></tr>
+                                <tr><td>Sunday</td><td>09:00 AM - 05:00 PM</td></tr>
+                            </tbody>
+                        </table>
+
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=29a Patons Road Howick 2014 Auckland New Zealand" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+                    </div>
+                    <div class="contact-form-container animate-on-scroll">
+                        <h3>Send Us a Message</h3>
+                        <form action="#" method="POST">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Frank Gym(Other). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile nav toggle
+            const navToggle = document.getElementById('nav-toggle');
+            const navLinks = document.getElementById('nav-links');
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close mobile nav when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Animate on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>null
