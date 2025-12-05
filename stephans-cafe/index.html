@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stephan's Cafe - Authentic Italian Coffee in Howick, Auckland</title>
+    <meta name="description" content="Stephan's Cafe, owned by world-renowned barista Guisepi Alfredo, brings the real taste of Italian coffee and authentic pastries to Howick, Auckland.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a2c2a; /* Dark Coffee Brown */
+            --secondary-color: #c89f9c; /* Muted Rose */
+            --background-color: #fdfaf6; /* Creamy White */
+            --text-color: #333333;
+            --light-accent: #e8e0d5; /* Light Beige */
+            --white: #ffffff;
+            --font-primary: 'Lora', serif;
+            --font-secondary: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-primary);
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 10px auto 0;
+        }
+
+        /* Header & Navigation */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: transparent;
+            padding: 15px 0;
+            transition: background-color 0.3s ease, padding 0.3s ease;
+        }
+
+        .main-header.scrolled {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 10px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: var(--font-primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .main-header.scrolled .nav-logo {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .main-header.scrolled .nav-links a {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--white);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .main-header.scrolled .hamburger .bar {
+            background-color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1511920183353-3c7c95a5742a');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #b38a87;
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--background-color);
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* Services Section */
+        #services {
+            background-color: var(--light-accent);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--white);
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .service-card .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        /* Team Section */
+        #team {
+            background-color: var(--background-color);
+        }
+        .team-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .team-content h3 {
+            font-style: italic;
+            color: var(--secondary-color);
+        }
+        .team-content p {
+            text-align: left;
+        }
+        .team-quote {
+            font-style: italic;
+            font-family: var(--font-primary);
+            margin-top: 20px;
+            border-left: 3px solid var(--secondary-color);
+            padding-left: 15px;
+        }
+
+        /* FAQ Section */
+        #faq {
+            background-color: var(--light-accent);
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .faq-question {
+            padding: 15px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 15px;
+        }
+        .faq-answer p {
+            padding-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        .contact-info ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+        .contact-info li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        .hours-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        .hours-table td {
+            padding: 8px;
+            border-bottom: 1px solid var(--light-accent);
+        }
+        .hours-table td:first-child {
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 0;
+        }
+        .main-footer p {
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.5rem; }
+            .hero-content h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .nav-links a {
+                color: var(--primary-color);
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .main-header {
+                background-color: var(--white);
+                padding: 10px 0;
+            }
+            .main-header .nav-logo, .main-header .hamburger .bar {
+                color: var(--primary-color);
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1.2rem; }
+            section { padding: 40px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container navbar">
+            <a href="#home" class="nav-logo">Stephan's Cafe</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Our Craft</a></li>
+                <li><a href="#team">The Barista</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Stephan's Cafe</h1>
+                <p>The real taste of Italian coffee in Howick, Auckland.</p>
+                <a href="#services" class="btn">Discover Our Passion</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">The Heart of Italy in Auckland</h2>
+                <div class="about-content">
+                    <p>Welcome to Stephan's Cafe, an authentic Italian coffee experience curated by world-renowned barista Guisepi Alfredo. Guisepi scours Italy for the very best coffee beans, importing them directly to New Zealand to provide Aucklanders with the true, unadulterated taste of Italian coffee. Our mission is simple: to serve coffee that tastes like you’ve been teleported to a backstreet café in Naples, without any of the pretentiousness.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2 class="section-title">Our Craft</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon">☕</div>
+                        <h3>World-Class Italian Coffee</h3>
+                        <p>Guisepi Alfredo personally sources rare, micro-lots of coffee beans from across Italy. Each bean is roasted with an obsessive attention to detail, resulting in a cup that is rich, complex, and authentically Italian.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon">🥐</div>
+                        <h3>Nonna's Authentic Pastries</h3>
+                        <p>We serve authentic Italian pastries made from a secret family recipe that Nonna crafted just after World War II. These timeless treats are the perfect companion to our exceptional coffee.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team">
+            <div class="container">
+                <h2 class="section-title">Meet Our Coffee Dictator</h2>
+                <div class="team-content">
+                    <h3>Guisepi Alfredo</h3>
+                    <p>Owner, roaster, and self-appointed coffee dictator at Stephan's Caffè. Guisepi is a world-renowned barista with an unhealthy obsession for beans. He spends half the year roaming Italy on a Vespa, sweet-talking farmers, bribing grandmothers, and hunting down micro-lots of rare coffee that never make it to supermarket shelves. The other half, he’s in Auckland — roasting, yelling at machines, and serving perfection in a cup.</p>
+                    <div class="team-quote">
+                        <p>You’ll taste the difference.<br>He’ll tell you why you’re wrong if you don’t.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="faq">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">Do you do double espresso?</div>
+                        <div class="faq-answer">
+                            <p>Yes.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Do you have any other beans?</div>
+                        <div class="faq-answer">
+                            <p>No, only Italian.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Visit Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Get In Touch</h3>
+                        <p>We're open on weekends. Come and experience a true taste of Italy.</p>
+                        <ul>
+                            <li><strong>Address:</strong> 47A Elliot Street, Howick, Auckland, 2014, New Zealand</li>
+                            <li><strong>Phone:</strong> <a href="tel:+123456798">+123456798</a></li>
+                            <li><strong>Email:</strong> <a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></li>
+                        </ul>
+                        <h3>Operating Hours</h3>
+                        <table class="hours-table">
+                            <tbody>
+                                <tr><td>Saturday</td><td>09:00 - 15:00</td></tr>
+                                <tr><td>Sunday</td><td>09:00 - 15:00</td></tr>
+                                <tr><td>Mon - Fri</td><td>Closed</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=47A Elliot Street, Howick, Auckland, 2014, New Zealand" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 Stephan's Cafe | Owned by Guisepi Alfredo | Howick, Auckland</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('.main-header');
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const navLinkItems = document.querySelectorAll('.nav-links a');
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            // Sticky header on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Hamburger menu toggle
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when a link is clicked
+            navLinkItems.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+
+            // FAQ Accordion
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const currentlyActive = document.querySelector('.faq-item.active');
+                    if (currentlyActive && currentlyActive !== item) {
+                        currentlyActive.classList.remove('active');
+                        currentlyActive.querySelector('.faq-answer').style.maxHeight = 0;
+                    }
+                    
+                    item.classList.toggle('active');
+                    const answer = item.querySelector('.faq-answer');
+                    if (item.classList.contains('active')) {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    } else {
+                        answer.style.maxHeight = 0;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
