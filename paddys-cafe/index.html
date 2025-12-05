@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paddy's Cafe - Authentic African Coffee in Howick, Auckland</title>
+    <meta name="description" content="Paddy's Cafe in Howick, Auckland, specialising in the finest, single-origin African coffees. Experience 30 years of barista expertise.">
+    <meta name="keywords" content="cafe, coffee, african coffee, howick, auckland, barista, paddy baker">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3E2723; /* Dark Brown */
+            --secondary-color: #A1887F; /* Muted Brown */
+            --background-color: #F5F5DC; /* Beige */
+            --text-color: #4E342E;
+            --white-color: #FFFFFF;
+            --accent-color: #D7CCC8; /* Light Taupe */
+            --header-font: 'Playfair Display', serif;
+            --body-font: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--header-font);
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 0.5rem auto 0;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Header & Navigation */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(62, 39, 35, 0.9);
+            padding: 15px 0;
+            transition: background-color 0.3s ease;
+        }
+        
+        .main-header.scrolled {
+            background-color: var(--primary-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--header-font);
+            font-size: 1.8rem;
+            color: var(--white-color);
+            text-decoration: none;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .main-nav ul li {
+            margin-left: 30px;
+        }
+
+        .main-nav ul li a {
+            color: var(--white-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        
+        .main-nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav ul li a:hover::after, .main-nav ul li a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--white-color);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        #home {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white-color);
+            background-image: url('https://images.unsplash.com/photo-1559496417-e7f25cb247f3');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+        
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: var(--white-color);
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* About Section */
+        #about .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .about-text, .team-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .team-info {
+            background-color: var(--white-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--secondary-color);
+        }
+        
+        .team-info h3 {
+            font-size: 1.8rem;
+        }
+
+        /* Services Section */
+        #services {
+            background-color: var(--white-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .service-item {
+            padding: 2rem;
+        }
+
+        .service-item .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-item h3 {
+            font-size: 1.5rem;
+        }
+
+        /* Hours & FAQ Section */
+        #hours-faq .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        
+        .hours-container, .faq-container {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .hours-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--accent-color);
+        }
+        
+        .hours-table td:first-child {
+            font-weight: 600;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .faq-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--white-color);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .contact-details ul {
+            list-style: none;
+        }
+        
+        .contact-details li {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details li span {
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            width: 30px;
+            text-align: center;
+            color: var(--secondary-color);
+        }
+        
+        .contact-details a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-details a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .main-footer p {
+            margin: 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h2 { font-size: 2rem; }
+            .hero-content h1 { font-size: 2.8rem; }
+
+            .main-nav {
+                position: fixed;
+                top: 70px; /* Height of header */
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--primary-color);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease-in-out;
+            }
+            
+            .main-nav.nav-active {
+                left: 0;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .main-nav ul li {
+                margin: 20px 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header" id="main-header">
+        <div class="nav-container">
+            <a href="#home" class="logo">Paddy's Cafe</a>
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#hours-faq">Hours & FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="hero-content">
+                <h1>Paddy's Cafe</h1>
+                <p>Authentic African Coffee in the Heart of Howick</p>
+                <a href="#contact" class="btn">Visit Us Today</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Welcome to Paddy's Cafe, your local destination for authentic African coffee. We travel across Africa, from the highlands of Ethiopia to the mountains of Kenya, sourcing the very best single-origin beans. Our mission is to bring you a wide range of unique and delicious coffee flavours, each with a story to tell from the continent where coffee was born.</p>
+                </div>
+                <div class="team-info">
+                    <h3>Meet The Owner</h3>
+                    <p><strong>Paddy Baker</strong>, a barista with 30 years of experience, is the heart and soul of our cafe. Born in Africa, his passion for coffee is rooted in his heritage. Paddy's expertise and deep knowledge of African coffee ensure that every cup served is a perfect expression of its origin.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2>What We Offer</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="icon">🌍</div>
+                        <h3>Single-Origin Beans</h3>
+                        <p>We source the finest beans directly from farms across Africa, ensuring unique flavours and ethical practices.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon">☕</div>
+                        <h3>Expertly Brewed Coffee</h3>
+                        <p>Enjoy a perfectly crafted espresso, pour-over, or flat white prepared by our experienced barista.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon">🏃</div>
+                        <h3>Takeaway Service</h3>
+                        <p>Your favourite African coffee is ready to go when you are. Quick, convenient, and always delicious.</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="icon">👃</div>
+                        <h3>Coffee Tasting</h3>
+                        <p>Join us for special tasting sessions to explore the diverse and rich flavour profiles of African coffees.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="hours-faq">
+            <div class="container">
+                <div class="hours-container">
+                    <h2>Operating Hours</h2>
+                    <table class="hours-table">
+                        <tbody>
+                            <tr><td>Monday</td><td>09:00 - 15:00</td></tr>
+                            <tr><td>Tuesday</td><td>09:00 - 15:00</td></tr>
+                            <tr><td>Wednesday</td><td>09:00 - 15:00</td></tr>
+                            <tr><td>Thursday</td><td>09:00 - 15:00</td></tr>
+                            <tr><td>Friday</td><td>Closed</td></tr>
+                            <tr><td>Saturday</td><td>Closed</td></tr>
+                            <tr><td>Sunday</td><td>Closed</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="faq-container">
+                    <h2>FAQ</h2>
+                    <div class="faq-item">
+                        <h3>Do you do takeaways?</h3>
+                        <p>Yes, we offer a full takeaway service for all our coffees and food items.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-details">
+                        <h3>Visit or Contact Us</h3>
+                        <p>We'd love to see you. Drop by for a coffee or get in touch with any questions.</p>
+                        <ul>
+                            <li><span>📍</span>47a Elliot Street, Howick, Auckland, 2014 New Zealand</li>
+                            <li><span>📞</span><a href="tel:+6421721889">+64 21 721 889</a></li>
+                            <li><span>✉️</span><a href="mailto:lloyd@pungatrading.com">lloyd@pungatrading.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyASnCVyE-8hRB7XpsOQCH0h9C53NcBNO0I&q=47a Elliot Street, Howick, Auckland, 2014 New Zealand" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 Paddy's Cafe | Owned by Paddy Baker</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const nav = document.getElementById('main-nav');
+            const navLinks = nav.querySelectorAll('a');
+            const header = document.getElementById('main-header');
+
+            // Toggle mobile navigation
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('nav-active');
+            });
+
+            // Close mobile nav when a link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (nav.classList.contains('nav-active')) {
+                        hamburger.classList.remove('active');
+                        nav.classList.remove('nav-active');
+                    }
+                });
+            });
+            
+            // Change header background on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
